@@ -1,17 +1,18 @@
 var $ = global.$ = global.jQuery = require('./vendor/jquery-3.1.0.min.js');
 // var TweenMax = global.TweenMax = require('./vendor/tweenmax.min.js');
 // require('./vendor/jquery.gsap.min.js');
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory } from 'react-router';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Router, Route, Link, browserHistory } from 'react-router'
 
-import App from './components/App';
-import PageSlider from './components/PageSlider';
-// import PageSliderItem from './components/PageSliderItem';
+import App from './components/App'
+import MainSlider from './components/MainSlider/MainSliderHandler'
+import PageSlider from './components/PageSlider'
 
 ReactDOM.render((
 	<Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route handler={App}>
+	        <Route path="/" component={MainSlider}></Route>
 	        <Route>
                 <Route path="/article/2" itemId={1} component={PageSlider}></Route>
                 <Route path="/article/1" itemId={0} component={PageSlider}></Route>

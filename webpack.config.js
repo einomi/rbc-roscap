@@ -52,7 +52,8 @@ var config = {
     resolve:  {
 	    alias: {
 		    'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
-		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js')
+		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
+		    'TweenMax': path.resolve('bower_components', 'gsap/src/uncompressed/TweenMax.js')
 	    },
         extensions: ['', '.js', '.jsx'],
         modulesDirectories: ['node_modules', 'bower_components']

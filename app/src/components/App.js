@@ -1,5 +1,7 @@
 import React from 'react';
 
+var TweenMax = global.TweenMax = require('TweenMax');
+
 export default class App extends React.Component {
 	constructor() {
 		super();
