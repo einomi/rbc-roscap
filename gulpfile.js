@@ -72,7 +72,9 @@ var CONFIG = {
 		port: 9000,
 		logPrefix: 'SP.Starter',
 		open: false,
-		middleware: [ historyApiFallback() ]
+		middleware: [
+			historyApiFallback()
+		]
 	},
 	sourcemaps: {
 		css: true,

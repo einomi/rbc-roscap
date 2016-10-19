@@ -7,18 +7,8 @@
 	overflow: hidden
 	$parent: &
 	+box
-	&__title
-		font-family: 'PFRegalTextPro'
-		font-size: 32px
-		margin-bottom: 20px
-	&__text
-		font-size: 16px
-	&__list
-		white-space: nowrap
-		font-size: 0
-		height: 100%
-		will-change: transform
 	&__item
+		position: relative
 		display: inline-block
 		height: 100%
 		width: 100%
@@ -33,20 +23,54 @@
 			#{$parent}
 				&__title
 					font-size: 50px
+		&._2, &._3, &._4, &._5, &._6, &._7, &._8
+			background-color: #a49b92
+			color: #fff
 		&._2
-			background-color: salmon
+			background-color: #a49b92
+			color: #fff
+			#{$parent}
+				&__text
+					color: #d6d0c8
 		&._3
-			background-color: aquamarine
+			background-color: $color-orange
 		&._4
-			background-color: brown
+			background-color: #ca242c
 		&._5
-			background-color: cornflowerblue
+			background-color: #747474
 		&._6
-			background-color: indigo
+			background-color: #a49b92
+			#{$parent}
+				&__text, &__number
+					color: #fff6ef
 		&._7
-			background-color: palegoldenrod
+			background-color: $color-orange
 		&._8
-			background-color: olivedrab
+			background-color: #ca242c
+	&__number
+		position: absolute
+		right: 37px
+		top: 22px
+		font-size: 16px
+	&__content
+		position: absolute
+		width: 100%
+		bottom: 120px
+		left: 0
+		padding-left: 65px
+		padding-right: 65px
+		+box
+	&__title
+		font-family: 'PFRegalTextPro'
+		font-size: 32px
+		margin-bottom: 20px
+	&__text
+		font-size: 16px
+	&__list
+		white-space: nowrap
+		font-size: 0
+		height: 100%
+		will-change: transform
 	&__button
 		position: absolute
 		left: 64px

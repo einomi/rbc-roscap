@@ -40,13 +40,45 @@
 		&._r-letter
 			
 .button
+	@extend .animated
 	display: block
-	border: 3px solid #f5821f
-	color: #f5821f
+	border: 3px solid $color-orange
+	color: $color-orange
 	text-transform: uppercase
 	font-size: 14px
 	height: 48px
 	line-height: 42px
-	padding: 0 52px
 	font-weight: 600
+	$parent: &
 	+box
+	&:hover
+		background-color: $color-orange
+		color: #fff
+		#{$parent}__arrows
+			fill: #fff
+			transition: none
+	&__caption
+		padding: 0 52px
+	&__arrows
+		@extend .animated
+		position: absolute
+		width: 15px
+		height: 17px
+		right: 18px
+		top: 50%
+		margin-top: -9px
+		fill: $color-orange
+	&._arrows
+		padding-right: 26px
+	&._white
+		border-color: #fff
+		color: #fff
+		&:hover
+			color: #a39b92
+			background-color: #fff
+			#{$parent}
+				&__arrows
+					fill: #a39b92
+		#{$parent}
+			&__arrows
+				fill: #fff
