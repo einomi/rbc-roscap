@@ -16,8 +16,8 @@ ReactDOM.render((
         <Route component={App}>
 	        <Route path="/" component={MainSlider}></Route>
 	        <Route>
-                <Route path="/article/2" itemId={1} component={PageSlider}></Route>
                 <Route path="/article/1" itemId={0} component={PageSlider}></Route>
+                <Route path="/article/2" itemId={1} component={PageSlider}></Route>
                 <Route path="/article/3" itemId={2} component={PageSlider}></Route>
                 <Route path="/article/4" itemId={3} component={PageSlider}></Route>
                 <Route path="/article/5" itemId={4} component={PageSlider}></Route>
