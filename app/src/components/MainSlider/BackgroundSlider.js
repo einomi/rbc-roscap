@@ -1,5 +1,6 @@
+import './BackgroundSlider.sass';
+
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 import BaseItemSlider from './BaseElementSlider'
 import BackgroundSliderItem from './BackgroundSliderItem'

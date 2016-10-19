@@ -1,3 +1,5 @@
+import './PageSlider.sass'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ScrollMagic from 'scrollmagic'

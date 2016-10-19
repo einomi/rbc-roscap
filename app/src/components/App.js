@@ -1,4 +1,8 @@
-import React from 'react';
+import './App.sass'
+
+import React from 'react'
+
+import RBCMenu from './RBCMenu'
 
 var TweenMax = global.TweenMax = require('TweenMax');
 
@@ -22,6 +26,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<RBCMenu />
                 {this.props.children}
 			</div>
 		);

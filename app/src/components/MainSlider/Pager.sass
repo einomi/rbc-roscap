@@ -1,0 +1,24 @@
+@import "styles/lib/_base"
+
+.pager
+	font-size: 0
+	white-space: nowrap
+	$parent: &
+	&__item
+		display: inline-block
+		width: 10px
+		height: 10px
+		border: 1px solid #fff
+		margin-right: 10px
+		cursor: pointer
+		transition: border-color 0.5s ease-out
+		+box
+		&:hover
+			opacity: 0.8
+		&._active
+			@extend %no-pe
+			background-color: #fff
+	&._home-slide
+		#{$parent}
+			&__item
+				border-color: #d6d0c8

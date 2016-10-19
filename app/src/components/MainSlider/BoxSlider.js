@@ -1,3 +1,5 @@
+import './BoxSlider.sass';
+
 import React from 'react'
 
 import BaseElementSlider from './BaseElementSlider'

@@ -1,0 +1,57 @@
+@import "styles/lib/_base"
+
+.box-slider
+	width: 730px
+	height: 437px
+	background-color: #fff
+	overflow: hidden
+	$parent: &
+	+box
+	&__title
+		font-family: 'PFRegalTextPro'
+		font-size: 32px
+		margin-bottom: 20px
+	&__text
+		font-size: 16px
+	&__list
+		white-space: nowrap
+		font-size: 0
+		height: 100%
+		will-change: transform
+	&__item
+		display: inline-block
+		height: 100%
+		width: 100%
+		padding: 44px 65px
+		white-space: normal
+		vertical-align: top
+		font-size: 22px
+		+box
+		&._1
+			background-color: #fff
+			color: #000
+			#{$parent}
+				&__title
+					font-size: 50px
+		&._2
+			background-color: salmon
+		&._3
+			background-color: aquamarine
+		&._4
+			background-color: brown
+		&._5
+			background-color: cornflowerblue
+		&._6
+			background-color: indigo
+		&._7
+			background-color: palegoldenrod
+		&._8
+			background-color: olivedrab
+	&__button
+		position: absolute
+		left: 64px
+		bottom: 41px
+	&__pager
+		position: absolute
+		bottom: 41px
+		right: 37px

@@ -13,6 +13,8 @@ export default class BoxSliderItem extends React.Component {
 					}
 				})()}
                 <div className="box-slider__title">{this.props.title}</div>
+				<div className="box-slider__text" dangerouslySetInnerHTML={{__html: this.props.text}}></div>
+				<a href="#" className="box-slider__button button">Узнать</a>
 			</div>
 		);
 	}

@@ -1,3 +1,5 @@
+require('styles/common.sass');
+
 var $ = global.$ = global.jQuery = require('./vendor/jquery-3.1.0.min.js');
 // var TweenMax = global.TweenMax = require('./vendor/tweenmax.min.js');
 // require('./vendor/jquery.gsap.min.js');
@@ -11,7 +13,7 @@ import PageSlider from './components/PageSlider'
 
 ReactDOM.render((
 	<Router history={browserHistory}>
-        <Route handler={App}>
+        <Route component={App}>
 	        <Route path="/" component={MainSlider}></Route>
 	        <Route>
                 <Route path="/article/2" itemId={1} component={PageSlider}></Route>

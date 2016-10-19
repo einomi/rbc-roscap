@@ -3,6 +3,9 @@
 var webpack = require('webpack');
 var argv = require('yargs').argv;
 var path = require('path');
+var autoprefixer = require('autoprefixer');
+var assets = require('postcss-assets');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var PATHS = {
     app: __dirname + '/app/src/'
@@ -15,7 +18,8 @@ var plugins = [
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
     new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
-    )
+    ),
+	new ExtractTextPlugin('[name].css')
 ];
 
 if (argv.production) {
@@ -26,6 +30,12 @@ if (argv.production) {
         comments: false
     }));
 }
+
+var sassLoaders = [
+	'css-loader',
+	'postcss-loader',
+	'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './app/src')
+];
 
 var config = {
     module: {
@@ -45,9 +55,23 @@ var config = {
             {
                 test: /\.json?$/,
                 loader: 'json-loader',
-            }
+            },
+	        {
+		        test: /\.sass$/,
+		        loader: ExtractTextPlugin.extract('style-loader', sassLoaders.join('!'))
+	        }
         ],
     },
+	postcss: [
+		autoprefixer({
+			browsers: ['last 2 versions']
+		}),
+		assets({
+			basePath: 'app/',
+			baseUrl: '../',
+			loadPaths: ['media/img/']
+		})
+	],
     watch: argv.production ? false : true,
     resolve:  {
 	    alias: {
@@ -55,8 +79,9 @@ var config = {
 		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
 		    'TweenMax': path.resolve('bower_components', 'gsap/src/uncompressed/TweenMax.js')
 	    },
-        extensions: ['', '.js', '.jsx'],
-        modulesDirectories: ['node_modules', 'bower_components']
+        extensions: ['', '.js', '.jsx', 'sass'],
+        modulesDirectories: ['node_modules', 'bower_components'],
+	    root: [path.join(__dirname, './app/src')]
     },
     plugins: plugins,
     debug: argv.production ? false : true,

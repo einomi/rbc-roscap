@@ -43,7 +43,7 @@ var PATHS = {
 	src: {
 		html:	 'app/src/*.html',
 		js:		 ['app/src/index.js'],
-		style:	 'app/media/sass/screen.sass',
+		style:	 'app/media/styles/screen.styles',
 		img:	 'app/media/img/**/*.*',
 		fonts:	 'app/media/fonts/**/*.*',
 		sprites: 'app/media/img/sprites/*.png',
@@ -53,7 +53,7 @@ var PATHS = {
 	watch: {
 		html:	 'app/src/**/*.html',
 		js:		 'app/src/**/*.jsx',
-		style:	 'app/media/sass/**/*.sass',
+		style:	 'app/media/styles/**/*.styles',
 		img:	 'app/media/img/**/*.*',
 		fonts:	 'app/media/fonts/**/*.*',
 		sprites: 'app/media/img/sprites/*.png',
@@ -113,47 +113,47 @@ gulp.task('html:build', function () {
 		.pipe(reload({stream: true}));
 });
 
-gulp.task('style:build', function () {
-
-	var processors = [
-		autoprefixer({
-			browsers: ['last 4 versions'],
-			cascade: true
-		}),
-		assets({
-			basePath: 'src/',
-			baseUrl: '../',
-			loadPaths: ['media/img/']
-		}),
-		sprites({
-			stylesheetPath: './build/media/css/',
-			spritePath: './build/media/img/sprite.png',
-			retina: true,
-			outputDimensions: true,
-			padding: 4,
-			filterBy: function (image) {
-				// Create sprite for ../sprites/ directory only
-				return /sprites\/.*\.png$/gi.test(image.url);
-			}
-		})
-	];
-
-	gulp.src(PATHS.src.style)
-		.pipe(gulpif(CONFIG.sourcemaps.css, sourcemaps.init()))
-		.pipe(sass({
-			outputStyle: 'compact',
-			sourceMap: false,
-			errLogToConsole: true,
-			indentedSyntax: true
-		}).on('error', function (err) {
-			console.error('Error: ', err.message);
-		}))
-		.pipe(postcss(processors))
-		.pipe(gulpif(CONFIG.compress.css, cssmin({processImport: false})))
-		.pipe(gulpif(CONFIG.sourcemaps.css, sourcemaps.write()))
-		.pipe(gulp.dest(PATHS.build.css))
-		.pipe(reload({stream: true}));
-});
+// gulp.task('style:build', function () {
+//
+// 	var processors = [
+// 		autoprefixer({
+// 			browsers: ['last 4 versions'],
+// 			cascade: true
+// 		}),
+// 		assets({
+// 			basePath: 'src/',
+// 			baseUrl: '../',
+// 			loadPaths: ['media/img/']
+// 		}),
+// 		sprites({
+// 			stylesheetPath: './build/media/css/',
+// 			spritePath: './build/media/img/sprite.png',
+// 			retina: true,
+// 			outputDimensions: true,
+// 			padding: 4,
+// 			filterBy: function (image) {
+// 				// Create sprite for ../sprites/ directory only
+// 				return /sprites\/.*\.png$/gi.test(image.url);
+// 			}
+// 		})
+// 	];
+//
+// 	gulp.src(PATHS.src.style)
+// 		.pipe(gulpif(CONFIG.sourcemaps.css, sourcemaps.init()))
+// 		.pipe(sass({
+// 			outputStyle: 'compact',
+// 			sourceMap: false,
+// 			errLogToConsole: true,
+// 			indentedSyntax: true
+// 		}).on('error', function (err) {
+// 			console.error('Error: ', err.message);
+// 		}))
+// 		.pipe(postcss(processors))
+// 		.pipe(gulpif(CONFIG.compress.css, cssmin({processImport: false})))
+// 		.pipe(gulpif(CONFIG.sourcemaps.css, sourcemaps.write()))
+// 		.pipe(gulp.dest(PATHS.build.css))
+// 		.pipe(reload({stream: true}));
+// });
 
 gulp.task('image:build', function () {
 	gulp.src(PATHS.src.img)
@@ -208,8 +208,8 @@ gulp.task('webpack', function (callback) {
 	return gulp.src(PATHS.src.js)
 		.pipe(named())
 		.pipe(webpackStream(webpackConfig, null, done))
-		.pipe(rename('bundle.js'))
-		.pipe(gulp.dest(PATHS.build.js))
+		// .pipe(rename('bundle.js'))
+		.pipe(gulp.dest(PATHS.build.html))
 		.on('data', function () {
 			if (!PRODUCTION) {
 				if (firstBuildReady && !callback.called) {
@@ -243,7 +243,7 @@ gulp.task('watch', function () {
 
 var buildDeps = [
 	'html:build',
-	'style:build',
+	// 'style:build',
 	'fonts:build',
 	'image:build',
 	'svg:build',

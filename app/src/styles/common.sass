@@ -1,0 +1,52 @@
+@import "lib/base"
+@import "fonts"
+@import "reset"
+@import "layout"
+// @import controls
+//@import "main"
+//@import footer
+// @import popup
+
+.header
+	&__text-container
+		display: inline-block
+		white-space: nowrap
+		color: #3e3e3e
+		vertical-align: top
+		margin-right: 65px
+		height: 55px
+		&:before
+			content: ""
+			width: 0
+			height: 100%
+			display: inline-block
+			vertical-align: middle
+		&-inner
+			display: inline-block
+			vertical-align: bottom
+	&__title
+		font-weight: 700
+	//&__text
+	&__logos
+		display: inline-block
+		font-size: 0
+		background-image: inline("../img/svg/logos.svg")
+		width: 130px
+		height: 55px
+		vertical-align: top
+		+cover
+	&__logo
+		display: inline-block
+		&._r-letter
+			
+.button
+	display: block
+	border: 3px solid #f5821f
+	color: #f5821f
+	text-transform: uppercase
+	font-size: 14px
+	height: 48px
+	line-height: 42px
+	padding: 0 52px
+	font-weight: 600
+	+box

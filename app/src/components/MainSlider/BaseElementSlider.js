@@ -27,9 +27,9 @@ export default class BackgroundSliderItem extends React.Component {
 		// console.log(slideId);
 		console.log(slideId, -(this.slideWidth * (slideId)));
 
-		TweenMax.to(this.refs.slideList, 1, {
+		TweenMax.to(this.refs.slideList, 0.8, {
 			x: -(this.slideWidth * (slideId)),
-			ease: Power3.easeInOut
+			ease: Expo.easeInOut
 		});
 	}
 
