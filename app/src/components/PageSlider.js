@@ -2,22 +2,24 @@ import './PageSlider.sass'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from 'react-router'
 import ScrollMagic from 'scrollmagic'
 // import 'debug.addIndicators'
 
-import PageSliderItem from './PageSliderItem'
+import PageSliderItem from './Article'
+import Article1 from './Article1'
 
 export default class PageSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.availableItems = [
-            {id: 0, refId: 'item0'},
-            {id: 1, refId: 'item1'},
-            {id: 2, refId: 'item2'},
-            {id: 3, refId: 'item3'},
+			{id: 0, refId: 'item0'},
+			{id: 1, refId: 'item1'},
+			{id: 2, refId: 'item2'},
+			{id: 3, refId: 'item3'},
 			{id: 4, refId: 'item4'}
-        ];
+		];
 
 		this.scrollController = new ScrollMagic.Controller({
 			globalSceneOptions: {
@@ -27,6 +29,7 @@ export default class PageSlider extends React.Component {
 
 		this._addMainSlide();
 	}
+
 	_addMainSlide() {
 		// Устанавливаем на первое место переданную в урле статью
 		let itemId = this.props.route.itemId;
@@ -41,19 +44,22 @@ export default class PageSlider extends React.Component {
 			}
 		}
 	}
+
 	_addNextSlide() {
 		if (!this.availableItems.length) {
-		    return;
+			return;
 		}
 		let item = this.availableItems.shift();
 		this._addSlideToState(item);
 		this._createScrollScene(item);
 	}
+
 	_addSlideToState(item) {
 		let items = this.state.items.slice();
 		items.push(item);
 		this.setState({items: items});
 	}
+
 	_createScrollScene(item) {
 		let refId = item.refId;
 		let slideDOMNode = ReactDOM.findDOMNode(this.refs[refId]);
@@ -87,14 +93,35 @@ export default class PageSlider extends React.Component {
 				history.pushState('', '', `/article/${currentId + 1}`);
 			});
 	}
+
 	componentDidMount() {
 		this._createScrollScene(this.mainItem);
 	}
+
 	render() {
 		return (
 			<div className="page-slider">
+				<header className="header">
+                    <div className="header__skin skin">
+                        <Link to="/" className="header__link">На главную</Link>
+                        <div className="header__head head">
+                            <div className="head__text-container">
+                                <div className="head__text-container-inner">
+                                    <div className="head__title">Банк Российский Капитал: </div>
+                                    <div className="head__text">решения для эффективного бизнеса</div>
+                                </div>
+                            </div>
+                            <div className="head__logos">
+                                <div className="head__logo _r-letter"></div>
+                                <div className="head__logo _roskapital"></div>
+                            </div>
+                        </div>
+					</div>
+				</header>
 				{this.state.items.map((item, index) => {
-					return <PageSliderItem key={item.id} pageId={item.id} ref={item.refId} />;
+					return (
+						<PageSliderItem key={item.id} pageId={item.id} ref={item.refId} />
+					);
 				})}
 			</div>
 		);

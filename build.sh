@@ -5,6 +5,4 @@ endColor='\x1B[0m'
 
 # сборка основного проекта
 echo "Build main"
-npm install
-bower install
 ./node_modules/.bin/gulp build --production

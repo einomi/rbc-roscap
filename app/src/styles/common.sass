@@ -7,7 +7,7 @@
 //@import footer
 // @import popup
 
-.header
+.head
 	&__text-container
 		display: inline-block
 		white-space: nowrap
@@ -82,3 +82,36 @@
 		#{$parent}
 			&__arrows
 				fill: #fff
+				
+.header
+	background-color: $color-pale
+	height: 63px
+	&__skin
+		height: 100%
+	&__link
+		@extend .animated
+		position: relative
+		display: inline-block
+		text-transform: uppercase
+		font-size: 14px
+		color: #a39b92
+		padding-left: 50px
+		padding-top: 27px
+		height: 100%
+		+box
+		&:before
+			+b
+			width: 36px
+			height: 15px
+			left: 0
+			top: 27px
+			background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjE1IiB2aWV3Qm94PSIwIDAgMzYgMTUiPiA8cGF0aCBkPSJNMzYuMDAwLDcuOTkxIEwxLjcxNCw3Ljk5MSBMNi4wMDAsMTIuOTkxIEw2LjAwMCwxNC45OTIgTDAuNDI4LDguNDkxIEwtMC4wMDAsOC45OTEgTC0wLjAwMCw3Ljk5MSBMLTAuMDAwLDYuOTkyIEwtMC4wMDAsNS45OTIgTDAuNDI4LDYuNDkyIEw2LjAwMCwtMC4wMDkgTDYuMDAwLDEuOTkxIEwxLjcxNCw2Ljk5MiBMMzYuMDAwLDYuOTkyIEwzNi4wMDAsNy45OTEgWiIgY2xhc3M9ImNscy0xIiBmaWxsPSIjZjU4MjFmIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4gPC9zdmc+Cg==')
+		&:hover
+			color: #000
+	&__head
+		position: absolute
+		top: 0
+		right: 0
+		.head__text-container-inner
+			position: relative
+			bottom: 4px

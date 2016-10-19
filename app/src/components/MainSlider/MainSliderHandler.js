@@ -103,18 +103,18 @@ export default class MainSlider extends React.Component {
 	render() {
 		return (
 			<div className="main-slider" onWheel={this._onWheel.bind(this)}>
-				<header className="main-slider__header header">
-					<div className="header__text-container">
-						<div className="header__text-container-inner">
-                            <div className="header__title">Банк Российский Капитал: </div>
-                            <div className="header__text">решения для эффективного бизнеса</div>
-						</div>
-					</div>
-					<div className="header__logos">
-						<div className="header__logo _r-letter"></div>
-						<div className="header__logo _roskapital"></div>
-					</div>
-				</header>
+				<div className="main-slider__head head">
+                    <div className="head__text-container">
+                        <div className="head__text-container-inner">
+                            <div className="head__title">Банк Российский Капитал: </div>
+                            <div className="head__text">решения для эффективного бизнеса</div>
+                        </div>
+                    </div>
+                    <div className="head__logos">
+                        <div className="head__logo _r-letter"></div>
+                        <div className="head__logo _roskapital"></div>
+                    </div>
+				</div>
 				<BackgroundSlider ref="backgroundSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData}/>
 				<BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData} onChangeSlide={this._setSlide.bind(this)}/>
 			</div>
