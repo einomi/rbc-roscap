@@ -12,22 +12,6 @@ import Article6 from './Article6'
 import Article7 from './Article7'
 
 export default class PageSliderItem extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			current: this.props.current,
-			next: this.props.next
-		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			current: nextProps.current,
-			next: nextProps.next
-		});
-	}
-
 	_createArticle(id) {
 		switch (id) {
 			case 0:

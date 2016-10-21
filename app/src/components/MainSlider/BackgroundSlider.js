@@ -13,7 +13,7 @@ export default class BackgroundSlider extends BaseItemSlider {
 	}
 
 	_setSliderWidth() {
-		this.$slider.width(Math.round($(window).width() * this.SLIDER_WIDTH_RATIO));
+		this.sliderDOMNode.setAttribute('style', `width: ${Math.round(window.innerWidth * this.SLIDER_WIDTH_RATIO)}px`);
 	}
 
 	_update() {
@@ -22,7 +22,7 @@ export default class BackgroundSlider extends BaseItemSlider {
 	}
 
 	componentDidMount() {
-		this.$slider = $(ReactDOM.findDOMNode(this));
+		this.sliderDOMNode = ReactDOM.findDOMNode(this);
 		this._setSliderWidth();
 		super.componentDidMount();
 	}

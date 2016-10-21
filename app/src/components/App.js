@@ -4,8 +4,6 @@ import React from 'react'
 
 import RBCMenu from './RBCMenu'
 
-var TweenMax = global.TweenMax = require('TweenMax');
-
 export default class App extends React.Component {
 	constructor() {
 		super();

@@ -10,7 +10,7 @@ export default class BackgroundSliderItem extends React.Component {
 			slideData: this.props.slideData
 		};
 
-		$(window).on('resize orientationchange', () => {
+		window.addEventListener('resize orientationchange', () => {
 			this._update();
 		});
 	}
@@ -38,12 +38,12 @@ export default class BackgroundSliderItem extends React.Component {
 		let x = -(this.slideWidth * (slideId));
 
 		if (!immediate) {
-			TweenLite.to(this.refs.slideList, 0.8, {
+			TweenMax.to(this.refs.slideList, 0.8, {
 				x: x,
 				ease: Expo.easeInOut
 			});
 		} else {
-			TweenLite.set(this.refs.slideList, {
+			TweenMax.set(this.refs.slideList, {
 				x: x,
 			});
 		}

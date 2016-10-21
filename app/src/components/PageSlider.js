@@ -29,20 +29,17 @@ export default class PageSlider extends React.Component {
 	}
 
 	componentDidMount() {
-		// console.log(this.state);
 		for (let item of this.state.items) {
 			this._createScrollScene(item);
 		}
 	}
 
 	componentWillUnmount() {
-		// console.log('unmount');
 		this.scrollController.destroy();
 	}
 
 	_initSlider() {
 		// Добавляем два слайда на страницу
-
 		let itemId = this.props.route.itemId;
 		let initItems = [];
 
@@ -81,22 +78,19 @@ export default class PageSlider extends React.Component {
 		let slideDOMNode = ReactDOM.findDOMNode(this.refs[refId]);
 		let elementsToHide = slideDOMNode.querySelectorAll('[data-hide-on-leave]');
 
-		let scene = new ScrollMagic.Scene({
+		new ScrollMagic.Scene({
 			triggerElement: slideDOMNode,
 			triggerHook: 0.5,
 			offset: 50,
 			duration: slideDOMNode.offsetHeight
 		})
-			// .setPin(slideDOMNode)
 			// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('enter', () => {
-				TweenLite.to(elementsToHide, 0.5, {y: 0, autoAlpha: 1, ease: Power3.easeInOut});
+				TweenMax.to(elementsToHide, 0.5, {y: 0, autoAlpha: 1, ease: Power3.easeInOut});
                 let triggerSlideId = parseInt(slideDOMNode.dataset.id);
                 let currentId = triggerSlideId;
-				// console.log(currentId, this.props.route.itemId);
 				if (currentId !== this.props.route.itemId || !this.firstEnter) {
-					// console.log('history update');
                     history.pushState(`article${currentId}`, '', `/article/${currentId + 1}`);
 					this.firstEnter = false;
 				}
@@ -105,51 +99,10 @@ export default class PageSlider extends React.Component {
                 }
 			})
 			.on('leave', () => {
-                TweenLite.to(elementsToHide, 0.5, {y: -50, autoAlpha: 0, ease: Power3.easeInOut});
+                TweenMax.to(elementsToHide, 0.5, {y: -50, autoAlpha: 0, ease: Power3.easeInOut});
 			});
 
 	}
-
-	// _createScrollScene(item) {
-	// 	let refId = item.refId;
-	// 	let slideDOMNode = ReactDOM.findDOMNode(this.refs[refId]);
-    //
-	// 	let scene = new ScrollMagic.Scene({
-	// 		triggerElement: slideDOMNode,
-	// 		triggerHook: 'onEnter',
-	// 		offset: 100,
-	// 		duration: slideDOMNode.offsetHeight
-	// 	})
-	// 		// .setPin(slideDOMNode)
-	// 		.addIndicators() // add indicators (requires plugin)
-	// 		.addTo(this.scrollController)
-	// 		.on('enter leave', (e) => {
-    //
-	// 			if (e.type == 'leave') {
-	// 			    console.log('leave');
-	// 			}
-    //
-	// 			// let triggerSlideDOMNode = scene.triggerElement();
-	// 			// let triggerSlideId = parseInt(triggerSlideDOMNode.dataset.id);
-     //            //
-	// 			// let currentId;
-	// 			// if (event.type == 'enter') {
-	// 			// 	currentId = triggerSlideId;
-	// 			// 	if (currentId === this.state.items[this.state.items.length - 1].id) {
-	// 			// 		this._addNextSlide();
-	// 			// 	}
-	// 			// } else {
-	// 			// 	for (var i = 0; i < this.state.items.length; i++) {
-	// 			// 		var item = this.state.items[i];
-	// 			// 		if (item.id === triggerSlideId) {
-	// 			// 			currentId = this.state.items[i - 1].id;
-	// 			// 			break;
-	// 			// 		}
-	// 			// 	}
-	// 			// }
-	// 			// history.pushState(`article${currentId}`, '', `/article/${currentId + 1}`);
-	// 		});
-	// }
 
 	render() {
 		return (

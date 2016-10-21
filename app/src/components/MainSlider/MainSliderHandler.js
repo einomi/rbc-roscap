@@ -73,7 +73,7 @@ export default class MainSlider extends React.Component {
 	}
 
 	componentDidMount() {
-		$(window).on('keydown', (e) => {
+		window.addEventListener('keydown', (e) => {
 			switch (e.keyCode) {
 				case 37: // left arrow
 					this._prev();

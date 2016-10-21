@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import classNames from 'classnames'
+import ScrollAnimation from './ScrollAnimation'
 
 import Share from './Share'
 
@@ -31,27 +31,29 @@ export default (props) => (
 						<div className="article__sidebar-image">
 							<img src="/media/img/articles/article1-thumb.jpg" alt=""/>
 						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как получить финансы на развитие малого бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как развивать бизнес с помощью финансовых продуктов</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как сэкономить на ведении бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
+						<ScrollAnimation fromX="left">
+							<div className="article__sidebar-more-info more-info">
+								<div className="more-info__title">Как получить финансы на развитие малого бизнеса</div>
+								<a href="#" className="more-info__button button _arrows">
+									<span className="button__caption">Узнать</span>
+									<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
+								</a>
+							</div>
+							<div className="article__sidebar-more-info more-info">
+								<div className="more-info__title">Как развивать бизнес с помощью финансовых продуктов</div>
+								<a href="#" className="more-info__button button _arrows">
+									<span className="button__caption">Узнать</span>
+									<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
+								</a>
+							</div>
+							<div className="article__sidebar-more-info more-info">
+								<div className="more-info__title">Как сэкономить на ведении бизнеса</div>
+								<a href="#" className="more-info__button button _arrows">
+									<span className="button__caption">Узнать</span>
+									<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
+								</a>
+							</div>
+						</ScrollAnimation>
 					</aside>
 
 					<div className="article__main">
@@ -109,14 +111,16 @@ export default (props) => (
 				</div>{/*.article__content-inner*/}
 			</div>{/*.skin*/}
 
-			<div className="skin">
-				<div className="article__emphasis emphasis">
-					<div className="emphasis__headline">Комментарий эксперта</div>
-					<div className="emphasis__content">
-						<div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.</div>
-					</div>
-				</div>
-			</div>
+			<ScrollAnimation fromX="right">
+                <div className="skin">
+                    <div className="article__emphasis emphasis">
+                        <div className="emphasis__headline">Комментарий эксперта</div>
+                        <div className="emphasis__content">
+                            <div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.</div>
+                        </div>
+                    </div>
+                </div>
+			</ScrollAnimation>
 
 			<div className="skin">
 
@@ -191,8 +195,8 @@ export default (props) => (
 
 			</div>{/*.skin*/}
 
-			<div className="skin" data-hide-on-leave>
-				<div className="article__other-articles other-articles">
+			<ScrollAnimation fromY="bottom" className="skin">
+				<div className="article__other-articles other-articles" data-hide-on-leave>
 					<div className="other-articles__item">
 						<div className="other-articles__item-title">Как сэкономить на ведении бизнеса</div>
 						<a href="#" className="other-articles__item-button button _arrows">
@@ -215,7 +219,7 @@ export default (props) => (
 						</a>
 					</div>
 				</div>
-			</div>
+			</ScrollAnimation>
 
 			<div className="article__next" data-hide-on-leave>Следующий лайфхак</div>
 

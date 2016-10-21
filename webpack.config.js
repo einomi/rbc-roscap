@@ -94,7 +94,9 @@ var config = {
         '../CSSPlugin': 'CSSPlugin',
         './CSSPlugin': 'CSSPlugin',
         'CSSPlugin': 'CSSPlugin',
-        'jquery': 'jQuery'
+	    '../TweenLite': 'TweenLite',
+	    './TweenLite': 'TweenLite',
+	    'TweenLite': 'TweenLite'
     }
 };
 

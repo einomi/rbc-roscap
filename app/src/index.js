@@ -1,9 +1,8 @@
 require('styles/common.sass');
 
-var $ = global.$ = global.jQuery = require('./vendor/jquery-3.1.0.min.js');
-import 'ScrollToPlugin'
-// var TweenMax = global.TweenMax = require('./vendor/tweenmax.min.js');
-// require('./vendor/jquery.gsap.min.js');
+import TweenMax from 'TweenMax';
+global.TweenMax = TweenMax;
+// import 'ScrollToPlugin'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, IndexRoute, Route, browserHistory } from 'react-router'
