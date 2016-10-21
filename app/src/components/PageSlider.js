@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
 import ScrollMagic from 'scrollmagic'
-import 'debug.addIndicators'
+// import 'debug.addIndicators'
 
 import PageSliderItem from './PageSliderItem'
 
@@ -88,7 +88,7 @@ export default class PageSlider extends React.Component {
 			duration: slideDOMNode.offsetHeight
 		})
 			// .setPin(slideDOMNode)
-			.addIndicators() // add indicators (requires plugin)
+			// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('enter', () => {
 				TweenLite.to(elementsToHide, 0.5, {y: 0, autoAlpha: 1, ease: Power3.easeInOut});

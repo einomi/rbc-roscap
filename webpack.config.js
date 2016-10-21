@@ -27,7 +27,9 @@ if (argv.production) {
         minimize: true,
         beautify: false,
         compress: true,
-        comments: false
+        comments: false,
+	    drop_console: true,
+	    warnings: true
     }));
 }
 
