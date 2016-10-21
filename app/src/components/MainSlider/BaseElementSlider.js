@@ -9,10 +9,14 @@ export default class BackgroundSliderItem extends React.Component {
 			currentSlide: this.props.currentSlide,
 			slideData: this.props.slideData
 		};
+
+		$(window).on('resize orientationchange', () => {
+			this._update();
+		});
 	}
 
 	componentDidMount() {
-		this.slideWidth = ReactDOM.findDOMNode(this).offsetWidth;
+		this._initSlideWidth();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -21,35 +25,27 @@ export default class BackgroundSliderItem extends React.Component {
 		});
 	}
 
-	_setSlide(slideId) {
-		// let steps = this.state.currentSlide + slideId;
-
-		// console.log(slideId);
-		console.log(slideId, -(this.slideWidth * (slideId)));
-
-		TweenMax.to(this.refs.slideList, 0.8, {
-			x: -(this.slideWidth * (slideId)),
-			ease: Expo.easeInOut
-		});
+	_update() {
+		this._initSlideWidth();
+		this._setSlide(this.state.currentSlide, true);
 	}
 
-	_next() {
-		if (this.state.currentSlide == this.state.slideData.length - 1) {
-			return;
-		}
-		TweenMax.to(this.refs.slideList, 1, {
-			x: -(this.slideWidth * (this.state.currentSlide + 1)),
-			ease: Power3.easeInOut
-		});
+	_initSlideWidth() {
+		this.slideWidth = ReactDOM.findDOMNode(this.refs.slider).offsetWidth;
 	}
 
-	_prev() {
-		if (this.state.currentSlide === 0) {
-			return;
+	_setSlide(slideId, immediate) {
+		let x = -(this.slideWidth * (slideId));
+
+		if (!immediate) {
+			TweenLite.to(this.refs.slideList, 0.8, {
+				x: x,
+				ease: Expo.easeInOut
+			});
+		} else {
+			TweenLite.set(this.refs.slideList, {
+				x: x,
+			});
 		}
-		TweenMax.to(this.refs.slideList, 1, {
-			x: -(this.slideWidth * (this.state.currentSlide - 1)),
-			ease: Power3.easeInOut
-		});
 	}
 }

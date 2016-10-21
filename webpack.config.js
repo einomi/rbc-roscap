@@ -77,7 +77,9 @@ var config = {
 	    alias: {
 		    'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
 		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-		    'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js')
+		    'TweenLite': path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
+		    'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
+		    'ScrollToPlugin': path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrollToPlugin.js')
 	    },
         extensions: ['', '.js', '.jsx', 'sass'],
         modulesDirectories: ['node_modules', 'bower_components'],
@@ -87,9 +89,6 @@ var config = {
     debug: argv.production ? false : true,
     devtool: argv.production ? null : '#eval',
     externals: {
-        '../TweenLite': 'TweenLite',
-        './TweenLite': 'TweenLite',
-        'TweenLite': 'TweenLite',
         '../CSSPlugin': 'CSSPlugin',
         './CSSPlugin': 'CSSPlugin',
         'CSSPlugin': 'CSSPlugin',

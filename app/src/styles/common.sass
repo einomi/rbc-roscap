@@ -41,7 +41,7 @@
 			
 .button
 	@extend .animated
-	display: block
+	display: inline-block
 	border: 3px solid $color-orange
 	color: $color-orange
 	text-transform: uppercase
@@ -85,7 +85,12 @@
 				
 .header
 	background-color: $color-pale
+	position: fixed
+	top: 36px
+	left: 0
+	width: 100%
 	height: 63px
+	z-index: 100
 	&__skin
 		height: 100%
 	&__link
@@ -111,7 +116,136 @@
 	&__head
 		position: absolute
 		top: 0
-		right: 0
+		right: 15px
 		.head__text-container-inner
 			position: relative
 			bottom: 4px
+			
+.text
+	font-size: 16px
+	line-height: 25px
+	
+.more-info
+	&__title
+		font-family: "PFRegalTextPro"
+		font-size: 20px
+		margin-bottom: 14px
+		color: #3e3e3e
+	&__button
+		position: relative
+		
+.emphasis
+	padding-left: 99px
+	&__headline
+		height: 32px
+		line-height: 32px
+		background-color: $color-orange
+		color: #fff
+		font-size: 14px
+		text-transform: uppercase
+		font-weight: 600
+		padding-left: 81px
+	&__content
+		padding: 40px 81px 55px
+		background-color: #ede9e3
+	&__text
+		font-size: 18px
+		font-family: "PFRegalTextPro"
+		color: #000
+		line-height: 26px
+		
+.offer
+	&__head
+		font-size: 0
+		white-space: nowrap
+	&__logos
+		display: inline-block
+		background-image: inline("../img/svg/logos.svg")
+		width: 130px
+		height: 55px
+		vertical-align: top
+		+cover
+	&__title
+		display: inline-block
+		height: 55px
+		vertical-align: top
+		background-color: #747474
+		text-transform: uppercase
+		color: #fff
+		width: 176px
+		white-space: normal
+		margin-left: -1px
+		font-size: 14px
+		text-align: center
+		padding-top: 12px
+		font-weight: 700
+		+box
+	&__content
+		padding-top: 28px
+	&__text
+		color: #000
+		font-size: 18px
+		font-weight: 700
+		margin-bottom: 25px
+	&__more
+		color: $color-orange
+		text-transform: uppercase
+		font-weight: 700
+
+.link
+	@extend .animated
+	position: relative
+	display: inline-block
+	font-weight: 800
+	text-decoration: none
+	color: $color-orange
+	&:after
+		@extend .animated
+		content: ""
+		position: absolute
+		left: 0
+		bottom: 0
+		display: block
+		height: 1px
+		width: 100%
+		background-color: #fce0c7
+	&:hover
+		color: #3e3e3e
+		&:after
+			background-color: #aba9a5
+			transition: none
+			
+.social-links
+	margin: 0 -24px
+	font-size: 0
+	&__item
+		@extend .animated
+		position: relative
+		display: inline-block
+		text-transform: uppercase
+		color: #a39b92
+		margin: 0 24px
+		font-size: 14px
+		&:after
+			+b
+			@extend %no-pe
+			height: 16px
+			width: 1px
+			background-color: $color-orange
+			right: -24px
+			top: -1px
+		&:last-child:after
+			display: none
+		&:hover
+			color: #3e3e3e
+			
+.license
+	position: fixed
+	bottom: 0
+	left: 0
+	width: 100%
+	height: 26px
+	line-height: 26px
+	font-size: 14px
+	color: #fff
+	background-color: rgba(#888, 0.8)

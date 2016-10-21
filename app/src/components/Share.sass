@@ -1,0 +1,63 @@
+@import "styles/lib/_base"
+
+.share
+	&__title
+		text-transform: uppercase
+		font-size: 16px
+		color: #a49b92
+		margin-bottom: 15px
+
+.ya-share2
+	&__item
+		opacity: 1
+		margin-right: 29px !important
+		&:hover
+			.ya-share2__badge
+				background-color: #a49b92 !important
+				transition: none
+		&_service
+			&_collections
+				display: none !important
+			&_vkontakte
+				&:hover
+					//.ya-share2__badge
+				.ya-share2__badge
+					&:before
+						width: 23px
+						height: 14px
+						background-image: inline("../img/svg/vkontakte.svg")
+			&_facebook
+				&:hover
+					//.ya-share2__badge
+				.ya-share2__badge
+					&:before
+						width: 11px
+						height: 20px
+						background-image: inline("../img/svg/facebook.svg")
+			&_twitter
+				&:hover
+					//.ya-share2__badge
+				.ya-share2__badge
+					&:before
+						width: 20px
+						height: 17px
+						background-image: inline("../img/svg/twitter.svg")
+	&__container
+		&_size
+			&_m
+				.ya-share2__icon
+					background: no-repeat center center !important
+					width: 28px !important
+					height: 28px !important
+	&__badge
+		@extend .animated
+		background-color: #cccccc !important
+		width: 52px
+		height: 48px
+		border-radius: 0 !important
+		&:before
+			+b
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			+cover
