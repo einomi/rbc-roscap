@@ -3,7 +3,7 @@ import './Share.sass'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ScrollMagic from 'scrollmagic'
-import 'debug.addIndicators'
+// import 'debug.addIndicators'
 
 export default class ScrollAnimation extends React.Component {
 	constructor(props) {
@@ -39,7 +39,7 @@ export default class ScrollAnimation extends React.Component {
 			triggerElement: element,
 			triggerHook: 0.6
 		})
-			.addIndicators() // add indicators (requires plugin)
+			// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('enter', () => {
 				if (!this.isShown) {
@@ -52,7 +52,7 @@ export default class ScrollAnimation extends React.Component {
 			triggerElement: element,
 			triggerHook: 1,
 		})
-			.addIndicators() // add indicators (requires plugin)
+			// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('leave', () => {
 				if (this.isShown) {
