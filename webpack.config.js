@@ -81,7 +81,8 @@ var config = {
 		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
 		    'TweenLite': path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
 		    'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
-		    'ScrollToPlugin': path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrollToPlugin.js')
+		    'ScrollToPlugin': path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrollToPlugin.js'),
+		    'Draggable': path.resolve('node_modules', 'gsap/src/uncompressed/utils/Draggable.js')
 	    },
         extensions: ['', '.js', '.jsx', 'sass'],
         modulesDirectories: ['node_modules', 'bower_components'],

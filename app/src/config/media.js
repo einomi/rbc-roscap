@@ -1,0 +1,8 @@
+let BREAKPOINTS = {
+	MD: 1110,
+	SM: 640
+};
+
+let MAX_HEIGHT = 744;
+
+export { BREAKPOINTS, MAX_HEIGHT }

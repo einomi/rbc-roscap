@@ -1,15 +1,22 @@
 .wrapper
 	position: relative
 	min-height: 100%
+	overflow: hidden
+	min-width: 640px
+	+max-screen($breakpoint-md)
+		min-height: 744px
 
 .skin
 	position: relative
 	width: 1152px
 	margin: auto
-	padding-left: 15px
-	padding-right: 15px
+	padding-left: 20px
+	padding-right: 20px
 	&._height100p
 		height: 100%
+	+max-screen($breakpoint-lg)
+		width: 100%
+		+box
 
 .row
 	@extend .clearfix

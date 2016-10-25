@@ -1,12 +1,34 @@
 @import "styles/lib/_base"
 
 .box-slider
-	width: 730px
-	height: 437px
-	background-color: #fff
 	overflow: hidden
+	position: absolute
+	left: 0
+	top: 0
+	height: 100%
+	width: 100%
 	$parent: &
 	+box
+	&__skin
+		height: 100%
+		display: flex
+	&__inner
+		position: relative
+		width: 730px
+		//height: 437px
+		height: 67.647%
+		max-height: 437px
+		overflow: hidden
+		margin-top: auto
+		margin-bottom: auto
+		margin-left: auto
+	&__list
+		white-space: nowrap
+		position: absolute
+		top: 0
+		font-size: 0
+		height: 100%
+		will-change: transform
 	&__item
 		position: relative
 		display: inline-block
@@ -16,13 +38,16 @@
 		white-space: normal
 		vertical-align: top
 		font-size: 22px
+		width: 730px
+		
 		+box
 		&._1
 			background-color: #fff
-			color: #000
+			color: #3e3e3e
 			#{$parent}
 				&__title
 					font-size: 50px
+					color: #000
 		&._2, &._3, &._4, &._5, &._6, &._7, &._8
 			background-color: #a49b92
 			color: #fff
@@ -66,11 +91,6 @@
 		margin-bottom: 20px
 	&__text
 		font-size: 16px
-	&__list
-		white-space: nowrap
-		font-size: 0
-		height: 100%
-		will-change: transform
 	&__button
 		position: absolute
 		left: 64px
@@ -79,3 +99,40 @@
 		position: absolute
 		bottom: 41px
 		right: 37px
+		z-index: 10000;
+	@media screen and (max-width: $breakpoint-md), screen and (max-height: $breakpoint-md-height)
+		&__content
+			position: static
+			padding-left: 0
+			padding-right: 0
+	+max-screen($breakpoint-md)
+		//width: 100vw
+		&__skin
+			display: block
+		&__inner
+			position: absolute
+			left: 20px
+			right: 20px
+			bottom: 112px
+			width: auto
+			min-height: 410px
+		&__item
+			padding: 36px 22px 36px 32px
+			width: calc(100vw - 40px)
+			+box
+			&._1
+				#{$parent}
+					&__title
+						font-size: 44px
+						line-height: 46px
+		&__title
+			font-size: 40px
+			line-height: 42px
+		&__text
+			font-size: 20px
+		&__button
+			left: 32px
+			bottom: 34px
+		&__pager
+			right: 39px
+			bottom: 48px

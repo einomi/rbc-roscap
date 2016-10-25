@@ -10,9 +10,9 @@ export default class BackgroundSliderItem extends React.Component {
 			slideData: this.props.slideData
 		};
 
-		window.addEventListener('resize orientationchange', () => {
-			this._update();
-		});
+		let listener = this._update.bind(this);
+		window.addEventListener('resize', listener);
+		window.addEventListener('orientationchange', listener);
 	}
 
 	componentDidMount() {

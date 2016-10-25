@@ -4,6 +4,7 @@ import React from 'react'
 
 import BoxSlider from './BoxSlider'
 import BackgroundSlider from './BackgroundSlider'
+import { MAX_HEIGHT } from '../../config/media'
 
 export default class MainSlider extends React.Component {
 	constructor(props) {
@@ -86,13 +87,15 @@ export default class MainSlider extends React.Component {
 	}
 
 	_onWheel(e) {
-		let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
+		if (window.innerHeight > MAX_HEIGHT) {
+            let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
 
-		direction == 'FORWARD' ? this._next() : this._prev();
+            direction == 'FORWARD' ? this._next() : this._prev();
+		}
 	}
 
-	_setSlide(slideId) {
-		if (slideId == this.state.currentSlide || slideId > this.state.slideData.length - 1 || slideId < 0) {
+	_setSlide(slideId, forced) {
+		if ((slideId == this.state.currentSlide || slideId > this.state.slideData.length - 1 || slideId < 0) && !forced) {
 			return;
 		}
 
@@ -126,7 +129,7 @@ export default class MainSlider extends React.Component {
                         </div>
                     </div>
                     <BackgroundSlider ref="backgroundSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData}/>
-                    <BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData} onChangeSlide={this._setSlide.bind(this)}/>
+                    <BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData} onChangeSlide={this._setSlide.bind(this)} />
                     <div className="main-slider__social-links social-links">
                         <a href="#" className="social-links__item">facebook</a>
                         <a href="#" className="social-links__item">vkontakte</a>

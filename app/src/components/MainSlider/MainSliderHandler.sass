@@ -1,7 +1,7 @@
 @import "styles/lib/_base"
 
 .main-slider
-	position: fixed
+	position: absolute
 	top: 0
 	right: 0
 	bottom: 0
@@ -12,15 +12,18 @@
 		top: 35px
 		right: 15px
 		z-index: 1
-	&__box
-		position: absolute
-		right: 15px
-		top: 50%
-		margin-top: -218px
+	&__box-slider
+		// empty
 	&__social-links
 		position: absolute
 		right: 15px
 		bottom: 45px
+	+max-screen($breakpoint-md)
+		&__head
+			background-color: $color-pale
+			width: 100%
+			right: 0
+			+box
 
 .main-slider-item
 	position: absolute
