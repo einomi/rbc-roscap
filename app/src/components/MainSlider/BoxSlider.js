@@ -12,69 +12,57 @@ export default class BackgroundSlider extends BaseElementSlider {
 	componentDidMount() {
 		super.componentDidMount();
 		let slideListDOMNode = ReactDOM.findDOMNode(this.refs.slideList);
-		var self = this;
+		let self = this;
+		this.backgroundSlider = this.props.parent.refs['backgroundSlider'];
+		this.backgroundSliderList = this.backgroundSlider.refs['slideList'];
+
+		this._update();
+
 		this.draggable = new Draggable(slideListDOMNode, {
 			type: 'x',
 			bounds: ReactDOM.findDOMNode(this.refs.slider),
-			// trigger: this.$element,
+			cursor: 'default',
 			dragClickables: true,
 			edgeResistance: 0.95,
-			onPress: function () {
+			onDragStart: function() {
+				document.body.classList.add('dragging');
+
 				TweenMax.killTweensOf(slideListDOMNode);
-			},
-			onDragStart: function () {
-				// App.dom.$html.addClass('dragging');
-				// self.$slidesContainer.removeClass('draggable');
+
 				this.startX = this.x;
-				TweenMax.killTweensOf(self.$slidesContainer);
-				// this.update(true);
 			},
-			onDragEnd: function () {
-				// App.dom.$html.removeClass('dragging');
-				// self.$slidesContainer.addClass('draggable');
+			onDragEnd: function() {
+				document.body.classList.remove('dragging');
 
-				// self._moveDraggableToNearestPosition();
-				// console.log('drag end');
-
-				// self.props.onChangeSlide(4);
 				self._moveToNearestSlide();
-				this.prevX = this.x;
 			},
-			onDrag: function () {
-				// var way = this.maxX - this.minX;
-				// var ratio = this.x / way;
-				// ratio = ratio < -1 ? -1 : ratio;
-				// ratio = ratio > 1 ? 1 : ratio;
-
-				// TweenMax.set(self.$rainbow, {x: (ratio * RAINBOW_PARALLAX_POWER) + '%'});
+			onDrag: function() {
+				TweenMax.set(self.backgroundSliderList, {x: this.x * self.BACKGROUND_SLIDER_POWER});
 			}
 		});
-		this.draggable.prevX = 0;
+		this.draggable.startX = 0;
 
-		// window.addEventListener('resize', () => this._setWidth())
-		console.log(this.slideWidth);
+		window.addEventListener('resize', () => {
+			this._update();
+		});
 	}
 
-	// _setWidth() {
-	// 	this.setState({sliderWidth: ReactDOM.findDOMNode(this).offsetWidth});
-	// }
+	_update() {
+		this.BACKGROUND_SLIDER_POWER = this.backgroundSlider.slideWidth / this.slideWidth;
+	}
 
 	_moveToNearestSlide() {
 		let POWER = Math.round(this.slideWidth / 3);
 
-		let way = this.draggable.maxX - this.draggable.minX;
+		let way = this.slideWidth * this.state.slideData.length;
 		let slideNumber;
 
-		if (this.draggable.x < this.draggable.startX) {
-			slideNumber = Math.round((Math.abs(this.draggable.x) + POWER) * this.state.slideData.length / way);
-		} else {
-			let offsetRatio = (Math.abs(this.draggable.x + POWER)) * this.state.slideData.length / way;
-			if (offsetRatio < 0.5) {
-				slideNumber = Math.floor(offsetRatio);
-			} else {
-				slideNumber = Math.round(offsetRatio);
-			}
-		}
+		let x = this.draggable.x;
+
+		let direction = this.draggable.x < this.draggable.startX ? 'RIGHT' : 'LEFT';
+
+		direction == 'RIGHT' ? x -= POWER : x += POWER;
+		slideNumber = Math.round(-x * this.state.slideData.length / way);
 
 		this.props.onChangeSlide(slideNumber, true);
 	}

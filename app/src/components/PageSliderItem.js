@@ -2,6 +2,9 @@ import './Article.sass'
 
 import React from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router'
+import MoreArticles from './MoreArticles'
+import ScrollAnimation from './ScrollAnimation'
 
 import Article1 from './Article1'
 import Article2 from './Article2'
@@ -29,17 +32,42 @@ export default class PageSliderItem extends React.Component {
 			case 6:
 				return <Article7 key={id} pageId={id}/>;
 			default:
-				throw `Error. Article with id ${id} not found.`;
+				break;
 		}
+	}
+
+	_onNextHandler(e) {
+		this.props.onNext();
 	}
 
 	render() {
 		return (
-			<div className="page-slider__item" data-id={this.props.id}>
-				<article className={classNames('article', {'_last': this.props.isLast})}>
-					{this._createArticle(this.props.id)}
-				</article>
-			</div>
+            <article className={classNames('article', {'_hidden': this.props.isHidden})} data-id={this.props.id}>
+
+	            <div className={`article__intro _${this.props.id + 1}`}></div>
+
+	            <div className="skin">
+		            <header className="article__header">
+			            <h1 className="article__title">{this.props.title}</h1>
+			            <p className="article__header-text">{this.props.excerpt}</p>
+			            <div className="article__header-info">
+				            <div className="article__header-info-number">лайфхак #{this.props.id + 1}</div>
+				            <Link to="/" className="article__header-info-link">смотреть все</Link>
+			            </div>
+		            </header>
+	            </div>
+
+                {this._createArticle(this.props.id)}
+
+	            <ScrollAnimation fromY="bottom" className="skin">
+		            <MoreArticles />
+	            </ScrollAnimation>
+
+	            <div className={classNames('article__next-wrapper', {'_hidden': this.props.isLast})}>
+		            <div className="article__next" data-hide-on-leave onClick={(e) => this._onNextHandler(e)}>Следующий лайфхак</div>
+	            </div>
+
+            </article>
 		);
 	}
 }

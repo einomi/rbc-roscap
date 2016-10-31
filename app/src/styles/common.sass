@@ -93,7 +93,14 @@
 		#{$parent}
 			&__arrows
 				fill: #fff
-				
+	+max-screen($breakpoint-md)
+		font-size: 20px
+		font-weight: 600
+		&__caption
+			padding: 0 38px
+		&._arrows
+			padding-right: 22px
+		
 .header
 	background-color: $color-pale
 	position: fixed
@@ -131,10 +138,20 @@
 		.head__text-container-inner
 			position: relative
 			bottom: 4px
+	+max-screen($breakpoint-md)
+		position: absolute
+		&__head
+			position: static
+			padding: 0
+		&__link
+			display: none
 			
 .text
 	font-size: 16px
 	line-height: 25px
+	+max-screen($breakpoint-md)
+		font-size: 20px
+		line-height: 28px
 	
 .more-info
 	&__title
@@ -144,7 +161,10 @@
 		color: #3e3e3e
 	&__button
 		position: relative
-		
+	//+max-screen($breakpoint-md)
+	//	&__title
+			//max-width: 330px
+
 .emphasis
 	padding-left: 99px
 	&__headline
@@ -164,7 +184,17 @@
 		font-family: "PFRegalTextPro"
 		color: #000
 		line-height: 26px
-		
+	+max-screen($breakpoint-md)
+		padding-left: 0
+		margin-top: 15px
+		&__headline
+			padding-left: 35px
+		&__content
+			padding: 45px 40px 55px 35px
+		&__text
+			font-size: 22px
+			line-height: 30px
+
 .offer
 	&__head
 		font-size: 0
@@ -202,6 +232,8 @@
 		color: $color-orange
 		text-transform: uppercase
 		font-weight: 700
+	+max-screen($breakpoint-md)
+		max-width: 520px
 
 .link
 	@extend .animated

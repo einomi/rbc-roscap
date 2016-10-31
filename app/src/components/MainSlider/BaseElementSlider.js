@@ -37,10 +37,13 @@ export default class BackgroundSliderItem extends React.Component {
 	_setSlide(slideId, immediate) {
 		let x = -(this.slideWidth * (slideId));
 
+		this.props.onAnimationStart();
+
 		if (!immediate) {
 			TweenMax.to(this.refs.slideList, 0.8, {
 				x: x,
-				ease: Expo.easeInOut
+				ease: Expo.easeInOut,
+				onComplete: () => this.props.onAnimationEnd()
 			});
 		} else {
 			TweenMax.set(this.refs.slideList, {

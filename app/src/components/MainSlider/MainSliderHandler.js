@@ -4,13 +4,14 @@ import React from 'react'
 
 import BoxSlider from './BoxSlider'
 import BackgroundSlider from './BackgroundSlider'
-import { MAX_HEIGHT } from '../../config/media'
+import {BREAKPOINTS, MAX_HEIGHT_SM, MAX_HEIGHT_MD} from '../../config/media'
 
 export default class MainSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			animating: false,
 			currentSlide: 0,
 			slideData: [
 				{
@@ -86,16 +87,36 @@ export default class MainSlider extends React.Component {
 		});
 	}
 
-	_onWheel(e) {
-		if (window.innerHeight > MAX_HEIGHT) {
-            let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
+	_startAnimation() {
+		this.setState({animating: true});
+	}
 
-            direction == 'FORWARD' ? this._next() : this._prev();
+	_endAnimation() {
+		this.setState({animating: false});
+	}
+
+	_onWheel(e) {
+		let smallScreen = window.innerHeight <= MAX_HEIGHT_SM && window.innerWidth <= BREAKPOINTS.MD;
+		let wideScreenSmallHeight = window.innerHeight <= MAX_HEIGHT_MD && window.innerWidth > BREAKPOINTS.MD;
+
+		if (smallScreen || wideScreenSmallHeight) {
+			return;
 		}
+
+		let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
+		direction == 'FORWARD' ? this._next() : this._prev();
 	}
 
 	_setSlide(slideId, forced) {
-		if ((slideId == this.state.currentSlide || slideId > this.state.slideData.length - 1 || slideId < 0) && !forced) {
+		if (this.state.animating && !forced) {
+		    return;
+		}
+
+		if (slideId == this.state.currentSlide && !forced) {
+			return;
+		}
+
+		if (slideId > this.state.slideData.length - 1 || slideId < 0) {
 			return;
 		}
 
@@ -114,34 +135,38 @@ export default class MainSlider extends React.Component {
 
 	render() {
 		return (
-            <div className="main-slider" onWheel={this._onWheel.bind(this)}>
-                <div className="skin _height100p">
-                    <div className="main-slider__head head">
-                        <div className="head__text-container">
-                            <div className="head__text-container-inner">
-                                <div className="head__title">Банк Российский Капитал: </div>
-                                <div className="head__text">решения для эффективного бизнеса</div>
-                            </div>
-                        </div>
-                        <div className="head__logos">
-                            <div className="head__logo _r-letter"></div>
-                            <div className="head__logo _roskapital"></div>
-                        </div>
-                    </div>
-                    <BackgroundSlider ref="backgroundSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData}/>
-                    <BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData} onChangeSlide={this._setSlide.bind(this)} />
-                    <div className="main-slider__social-links social-links">
-                        <a href="#" className="social-links__item">facebook</a>
-                        <a href="#" className="social-links__item">vkontakte</a>
-                        <a href="#" className="social-links__item">twitter</a>
-                    </div>
-                </div>
-                <div className="main-slider__license license">
-	                <div className="skin">
-		                <p className="license__text" dangerouslySetInnerHTML={{__html: 'Акционерный коммерческий банк &laquo;РОССИЙСКИЙ КАПИТАЛ&raquo; Генеральная лицензия ЦБ РФ № 2312 от 28 ноября 2014.'}}></p>
-	                </div>
-                </div>
-            </div>
+			<div className="main-slider" onWheel={this._onWheel.bind(this)}>
+				<div className="skin _height100p">
+					<div className="main-slider__head head">
+						<div className="head__text-container">
+							<div className="head__text-container-inner">
+								<div className="head__title">Банк Российский Капитал:</div>
+								<div className="head__text">решения для эффективного бизнеса</div>
+							</div>
+						</div>
+						<div className="head__logos">
+							<div className="head__logo _r-letter"></div>
+							<div className="head__logo _roskapital"></div>
+						</div>
+					</div>
+					<BackgroundSlider ref="backgroundSlider" currentSlide={this.state.currentSlide}
+					                  slideData={this.state.slideData} onAnimationStart={this._startAnimation.bind(this)}
+					                  onAnimationEnd={this._endAnimation.bind(this)}/>
+					<BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData}
+					           onChangeSlide={this._setSlide.bind(this)} onAnimationStart={this._startAnimation.bind(this)}
+					           onAnimationEnd={this._endAnimation.bind(this)} parent={this} />
+					<div className="main-slider__social-links social-links">
+						<a href="#" className="social-links__item">facebook</a>
+						<a href="#" className="social-links__item">vkontakte</a>
+						<a href="#" className="social-links__item">twitter</a>
+					</div>
+				</div>
+				<div className="main-slider__license license">
+					<div className="skin">
+						<p className="license__text" dangerouslySetInnerHTML={{__html: 'Акционерный коммерческий банк &laquo;РОССИЙСКИЙ КАПИТАЛ&raquo; Генеральная лицензия ЦБ РФ № 2312 от 28 ноября 2014.'}}></p>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }

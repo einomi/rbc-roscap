@@ -1,0 +1,45 @@
+@import "styles/lib/_base"
+
+.other-articles
+	font-size: 0
+	text-align: center
+	&__items
+		margin-left: -31px
+		margin-right: -31px
+	&__item
+		position: relative
+		display: inline-block
+		width: 33.3333%
+		text-align: left
+		vertical-align: top
+		padding: 0 31px
+		+box
+		&-inner
+			position: relative
+			padding: 38px 45px 0 61px
+			background-color: #ede9e3
+			height: 218px
+			+box
+		&-title
+			font-size: 20px
+			font-family: "PFRegalTextPro"
+			color: #3e3e3e
+		&-button
+			position: absolute
+			bottom: 38px
+			left: 61px
+			font-size: 14px
+	+max-screen($breakpoint-md)
+		&__item
+			display: none
+			width: 100%
+			&-inner
+				padding: 30px 35px 0 35px
+				height: 194px
+			&-title
+				font-size: 24px
+			&-button
+				left: 35px
+				bottom: 34px
+			&:first-child
+				display: inline-block

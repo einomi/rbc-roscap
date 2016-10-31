@@ -3,7 +3,7 @@ import './Share.sass'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ScrollMagic from 'scrollmagic'
-// import 'debug.addIndicators'
+import 'debug.addIndicators'
 
 export default class ScrollAnimation extends React.Component {
 	constructor(props) {
@@ -31,28 +31,38 @@ export default class ScrollAnimation extends React.Component {
 			default:
 				this.yOffset = 0;
 		}
+
+		this.isShown = false;
+
+		window.addEventListener('resize', this.scrollController.update);
 	}
+
 	componentDidMount() {
 		let element = ReactDOM.findDOMNode(this);
 
 		new ScrollMagic.Scene({
 			triggerElement: element,
-			triggerHook: 0.6
+			triggerHook: 1
 		})
-			// .addIndicators() // add indicators (requires plugin)
+		// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('enter', () => {
 				if (!this.isShown) {
-                    TweenMax.fromTo(element, 0.5, {autoAlpha: 0, x: this.xOffset, y: this.yOffset}, {autoAlpha: 1, x: 0, y: 0});
-                    this.isShown = true;
+					TweenMax.fromTo(element, 0.5, {autoAlpha: 0, x: this.xOffset, y: this.yOffset}, {
+						autoAlpha: 1,
+						x: 0,
+						y: 0
+					});
+					this.isShown = true;
 				}
 			});
 
 		new ScrollMagic.Scene({
 			triggerElement: element,
 			triggerHook: 1,
+
 		})
-			// .addIndicators() // add indicators (requires plugin)
+		// .addIndicators() // add indicators (requires plugin)
 			.addTo(this.scrollController)
 			.on('leave', () => {
 				if (this.isShown) {
@@ -65,11 +75,12 @@ export default class ScrollAnimation extends React.Component {
 
 	componentWillUnmount() {
 		this.scrollController.destroy();
+		window.removeEventListener('resize', this.scrollController.update);
 	}
 
 	render() {
 		return (
-			<div style={{visibility: 'hidden', opacity: 0, willChange: 'transform'}}>
+			<div style={{visibility: 'hidden', opacity: 0, willChange: 'transform', position: 'relative', zIndex: 1}}>
 				{this.props.children}
 			</div>
 		);

@@ -13,14 +13,18 @@
 	//left: 0
 	//overflow: auto
 	
-	//&__items
+	&__items
+		position: relative
 	//	position: fixed
 	//	top: 0
 	//	right: 0
 	//	bottom: 0
 	//	left: 0
 	//	overflow: auto
-	//&__item
+	&__item
+		&:first-child
+			.article
+				bottom: auto
 		//display: none
 		//&._current
 		//	display: block
