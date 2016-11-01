@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class BackgroundSliderItem extends React.Component {
+export default class BaseElementSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -10,9 +10,9 @@ export default class BackgroundSliderItem extends React.Component {
 			slideData: this.props.slideData
 		};
 
-		let listener = this._update.bind(this);
-		window.addEventListener('resize', listener);
-		window.addEventListener('orientationchange', listener);
+		this.listener = () => this._update();
+		window.addEventListener('resize', this.listener);
+		window.addEventListener('orientationchange', this.listener);
 	}
 
 	componentDidMount() {
@@ -23,6 +23,11 @@ export default class BackgroundSliderItem extends React.Component {
 		this.setState({
 			currentSlide: nextProps.currentSlide
 		});
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.listener);
+		window.removeEventListener('orientationchange', this.listener);
 	}
 
 	_update() {
@@ -49,6 +54,7 @@ export default class BackgroundSliderItem extends React.Component {
 			TweenMax.set(this.refs.slideList, {
 				x: x,
 			});
+			this.props.onAnimationEnd();
 		}
 	}
 }

@@ -6,7 +6,7 @@ import BoxSlider from './BoxSlider'
 import BackgroundSlider from './BackgroundSlider'
 import {BREAKPOINTS, MAX_HEIGHT_SM, MAX_HEIGHT_MD} from '../../config/media'
 
-export default class MainSlider extends React.Component {
+export default class MainSliderHandler extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -72,10 +72,8 @@ export default class MainSlider extends React.Component {
 				}
 			]
 		};
-	}
 
-	componentDidMount() {
-		window.addEventListener('keydown', (e) => {
+		this._keyDownHandler = (e) => {
 			switch (e.keyCode) {
 				case 37: // left arrow
 					this._prev();
@@ -84,7 +82,31 @@ export default class MainSlider extends React.Component {
 					this._next();
 					break;
 			}
-		});
+		};
+
+		this._onWheelHandler = (e) => {
+			// console.log('wheel');
+			let smallScreen = window.innerHeight <= MAX_HEIGHT_SM && window.innerWidth <= BREAKPOINTS.MD;
+			let wideScreenSmallHeight = window.innerHeight <= MAX_HEIGHT_MD && window.innerWidth > BREAKPOINTS.MD;
+
+			// if (smallScreen || wideScreenSmallHeight) {
+			// 	return;
+			// }
+			// console.log(e);
+
+			let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
+			direction == 'FORWARD' ? this._next(true) : this._prev(true);
+		};
+	}
+
+	componentDidMount() {
+		window.addEventListener('keydown', this._keyDownHandler);
+		window.addEventListener('mousewheel', this._onWheelHandler);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('keydown', this._keyDownHandler);
+		window.removeEventListener('mousewheel', this._onWheelHandler);
 	}
 
 	_startAnimation() {
@@ -95,24 +117,12 @@ export default class MainSlider extends React.Component {
 		this.setState({animating: false});
 	}
 
-	_onWheel(e) {
-		let smallScreen = window.innerHeight <= MAX_HEIGHT_SM && window.innerWidth <= BREAKPOINTS.MD;
-		let wideScreenSmallHeight = window.innerHeight <= MAX_HEIGHT_MD && window.innerWidth > BREAKPOINTS.MD;
-
-		if (smallScreen || wideScreenSmallHeight) {
-			return;
-		}
-
-		let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
-		direction == 'FORWARD' ? this._next() : this._prev();
-	}
-
-	_setSlide(slideId, forced) {
-		if (this.state.animating && !forced) {
+	_setSlide(slideId, forced, dragging) {
+		if (this.state.animating && !dragging) {
 		    return;
 		}
 
-		if (slideId == this.state.currentSlide && !forced) {
+		if (slideId == this.state.currentSlide && !dragging) {
 			return;
 		}
 
@@ -125,17 +135,17 @@ export default class MainSlider extends React.Component {
 		this.setState({currentSlide: slideId});
 	}
 
-	_next() {
-		this._setSlide(this.state.currentSlide + 1);
+	_next(forced) {
+		this._setSlide(this.state.currentSlide + 1, forced);
 	}
 
-	_prev() {
-		this._setSlide(this.state.currentSlide - 1);
+	_prev(forced) {
+		this._setSlide(this.state.currentSlide - 1, forced);
 	}
 
 	render() {
 		return (
-			<div className="main-slider" onWheel={this._onWheel.bind(this)}>
+			<div className="main-slider">
 				<div className="skin _height100p">
 					<div className="main-slider__head head">
 						<div className="head__text-container">

@@ -70,6 +70,26 @@ export default class PageSlider extends React.Component {
 		this._initSlider();
 
 		window.addEventListener('resize', this.scrollController.update);
+
+		let wrapperDOMNode = document.querySelector('.wrapper');
+
+		this._onWheelHandler = (e) => {
+			if (this.scrollAnimating) {
+				e.preventDefault();
+				return;
+			}
+
+			// console.log(this.wrapperDOMNode);
+
+			if (window.scrollY >= wrapperDOMNode.offsetHeight - window.innerHeight && e.deltaY > 0) {
+				if (this.scrollCount > 5) {
+					this.scrollAnimating = true;
+					this._addSlide();
+					this.scrollCount = 0;
+				}
+				this.scrollCount += 1;
+			}
+		};
 	}
 
 	componentDidMount() {
@@ -77,18 +97,8 @@ export default class PageSlider extends React.Component {
 			this._createScrollScene(item);
 		}
 
-		let wrapperDOMNode = document.querySelector('.wrapper');
-
-		var scrollCount = 0;
-		window.addEventListener('mousewheel', (e) => {
-			if (window.scrollY >= wrapperDOMNode.offsetHeight - window.innerHeight && e.deltaY > 0) {
-				if (scrollCount > 5) {
-					this._addSlide();
-					// this._scrollToSlide();
-				}
-				scrollCount += 1;
-			}
-		});
+		this.scrollCount = 0;
+		window.addEventListener('mousewheel', this._onWheelHandler);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -101,6 +111,7 @@ export default class PageSlider extends React.Component {
 	componentWillUnmount() {
 		this.scrollController.destroy();
 		window.removeEventListener('resize', this.scrollController.update);
+		window.removeEventListener('mousewheel', this._onWheelHandler);
 	}
 
 	_onNextClickHandler(slideIndex) {
@@ -114,7 +125,11 @@ export default class PageSlider extends React.Component {
 
 	_scrollToSlide(slideIndex) {
 		let slideScrollTo = ReactDOM.findDOMNode(this.refs[this.state.items[slideIndex].refId]);
-        TweenMax.to(window, 1, {scrollTo: {y: slideScrollTo, autoKill: false}, ease: Power3.easeInOut});
+		TweenMax.to(window, 1, {
+			scrollTo: {y: slideScrollTo, autoKill: false},
+			ease: Power3.easeInOut,
+			onComplete: () => this.scrollAnimating = false
+		});
 	}
 
 	_initSlider() {
@@ -179,7 +194,6 @@ export default class PageSlider extends React.Component {
 					TweenMax.to(elementsToHide, 0.4, {y: -50, autoAlpha: 0, ease: Power3.easeInOut});
 				}
 			});
-
 	}
 
 	render() {

@@ -7,12 +7,14 @@ import BaseElementSlider from './BaseElementSlider'
 import BoxSliderItem from './BoxSliderItem'
 import Pager from './Pager'
 
-export default class BackgroundSlider extends BaseElementSlider {
-
+export default class BoxSlider extends BaseElementSlider {
 	componentDidMount() {
 		super.componentDidMount();
-		let slideListDOMNode = ReactDOM.findDOMNode(this.refs.slideList);
+
 		let self = this;
+
+		let slideListDOMNode = ReactDOM.findDOMNode(this.refs.slideList);
+
 		this.backgroundSlider = this.props.parent.refs['backgroundSlider'];
 		this.backgroundSliderList = this.backgroundSlider.refs['slideList'];
 
@@ -23,7 +25,7 @@ export default class BackgroundSlider extends BaseElementSlider {
 			bounds: ReactDOM.findDOMNode(this.refs.slider),
 			cursor: 'default',
 			dragClickables: true,
-			edgeResistance: 0.95,
+			edgeResistance: 0.7,
 			onDragStart: function() {
 				document.body.classList.add('dragging');
 
@@ -41,13 +43,14 @@ export default class BackgroundSlider extends BaseElementSlider {
 			}
 		});
 		this.draggable.startX = 0;
-
-		window.addEventListener('resize', () => {
-			this._update();
-		});
 	}
 
 	_update() {
+		super._update();
+		this._setBackgroundSliderPower();
+	}
+
+	_setBackgroundSliderPower() {
 		this.BACKGROUND_SLIDER_POWER = this.backgroundSlider.slideWidth / this.slideWidth;
 	}
 
@@ -64,7 +67,7 @@ export default class BackgroundSlider extends BaseElementSlider {
 		direction == 'RIGHT' ? x -= POWER : x += POWER;
 		slideNumber = Math.round(-x * this.state.slideData.length / way);
 
-		this.props.onChangeSlide(slideNumber, true);
+		this.props.onChangeSlide(slideNumber, false, true);
 	}
 
 	render() {

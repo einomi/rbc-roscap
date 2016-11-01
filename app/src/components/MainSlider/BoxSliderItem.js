@@ -5,18 +5,18 @@ import classNames from 'classnames'
 
 
 export default class BoxSliderItem extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state
-	// }
-
 	componentDidMount() {
 		this.slideDOMNode = ReactDOM.findDOMNode(this);
 		this._initSlideWidth();
 
-		let listener = () => this._initSlideWidth();
-		window.addEventListener('resize', listener);
-		window.addEventListener('orientationchange', listener);
+		this.listener = () => this._initSlideWidth();
+		window.addEventListener('resize', this.listener);
+		window.addEventListener('orientationchange', this.listener);
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.listener);
+		window.removeEventListener('orientationchange', this.listener);
 	}
 
 	_initSlideWidth() {

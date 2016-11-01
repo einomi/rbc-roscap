@@ -17,11 +17,16 @@
 		width: 100%
 		transform: translateY(100%)
 		#{$parent}
+			&__intro
+				//top: 20px
 			&__header
-				//display: none
+				opacity: 0
+				top: 250px
+			&__content
 				opacity: 0
 				top: 250px
 	&__intro
+		position: relative
 		height: 551px
 		+cover
 		&._1
@@ -96,6 +101,10 @@
 						background-color: #aba9a5
 						transition: none
 	&__content
+		position: relative
+		transition: top 1s ease-in-out, opacity 1s ease-in-out
+		top: 0px
+		opacity: 1
 		&-inner
 			@extend .clearfix
 			padding-left: 99px
