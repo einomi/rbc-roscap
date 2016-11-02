@@ -76,8 +76,10 @@ export default class BoxSlider extends BaseElementSlider {
 				<div className="box-slider__skin skin">
 					<div className="box-slider__inner" ref="slider">
 						<div className="box-slider__list" ref="slideList">
-							{this.state.slideData.map((item, index) =>
-								<BoxSliderItem key={item.id} parentWidth={this.slideWidth} {...item} />
+							{this.state.slideData.map((item, index) => {
+									let isCurrent = this.state.currentSlide === item.id ? true : false;
+									return <BoxSliderItem key={item.id} isCurrent={isCurrent} parentWidth={this.slideWidth} {...item} />
+								}
 							)}
 						</div>
 						<Pager currentSlide={this.state.currentSlide} slideData={this.state.slideData}

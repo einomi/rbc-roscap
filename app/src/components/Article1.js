@@ -3,7 +3,7 @@ import ScrollAnimation from './ScrollAnimation'
 
 import Share from './Share'
 
-export default (props) => (
+export default (props) =>
 	<div className="article__content">
 
 		<div className="skin">
@@ -94,31 +94,33 @@ export default (props) => (
 		</div>{/*.skin*/}
 
 		<ScrollAnimation fromX="right">
-            <div className="skin">
-                <div className="article__emphasis emphasis">
-                    <div className="emphasis__headline">Комментарий эксперта</div>
-                    <div className="emphasis__content">
-                        <div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</div>
-                    </div>
-                </div>
-            </div>
+			<div className="skin">
+				<div className="article__emphasis emphasis">
+					<div className="emphasis__headline">Комментарий эксперта</div>
+					<div className="emphasis__content">
+						<div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</div>
+					</div>
+				</div>
+			</div>
 		</ScrollAnimation>
 
 		<div className="skin">
 
 			<div className="article__content-inner">
 				<aside className="article__sidebar">
-					<div className="article__offer offer">
-						<div className="offer__head">
-							<div className="offer__logos"></div>
-							<div className="offer__title">Специальное
-								предложение</div>
+					<ScrollAnimation fromX="left">
+						<div className="article__offer offer">
+							<div className="offer__head">
+								<div className="offer__logos"></div>
+								<div className="offer__title">Специальное
+									предложение</div>
+							</div>
+							<div className="offer__content">
+								<div className="offer__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</div>
+								<div className="offer__more">Подробнее на <a href="http://roscap.ru" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
+							</div>
 						</div>
-						<div className="offer__content">
-							<div className="offer__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</div>
-							<div className="offer__more">Подробнее на <a href="http://roscap.ru" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
-						</div>
-					</div>
+					</ScrollAnimation>
 				</aside>
 
 				<div className="article__main">
@@ -177,4 +179,3 @@ export default (props) => (
 		</div>{/*.skin*/}
 
 	</div>
-);

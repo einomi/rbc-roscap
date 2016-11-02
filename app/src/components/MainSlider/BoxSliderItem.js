@@ -25,7 +25,8 @@ export default class BoxSliderItem extends React.Component {
 
 	render() {
 		return (
-			<div className={`box-slider__item _${this.props.id + 1}`} style={{zIndex: this.props.zIndex}}>
+			<div className={classNames(`box-slider__item _${this.props.id + 1}`, {'_current': this.props.isCurrent})}
+			     style={{zIndex: this.props.zIndex}}>
 				{(() => {
 					if (this.props.id !== 0) {
 						return <div className="box-slider__number">лайфхак #{this.props.id}</div>;

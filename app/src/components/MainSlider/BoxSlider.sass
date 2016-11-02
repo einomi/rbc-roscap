@@ -15,7 +15,6 @@
 	&__inner
 		position: relative
 		width: 730px
-		//height: 437px
 		height: 67.647%
 		max-height: 437px
 		overflow: hidden
@@ -40,7 +39,6 @@
 		vertical-align: top
 		font-size: 22px
 		width: 730px
-		
 		+box
 		&._1
 			background-color: #fff
@@ -73,6 +71,10 @@
 			background-color: $color-orange
 		&._8
 			background-color: #ca242c
+		&._current
+			#{$parent}
+				&__button
+					opacity: 1
 	&__number
 		position: absolute
 		right: 37px
@@ -96,11 +98,12 @@
 		position: absolute
 		left: 64px
 		bottom: 41px
+		opacity: 0
 	&__pager
 		position: absolute
 		bottom: 41px
 		right: 37px
-		z-index: 10000;
+		z-index: 10000
 	@media screen and (max-width: $breakpoint-md), screen and (max-height: $breakpoint-md-height)
 		&__content
 			position: static
