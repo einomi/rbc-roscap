@@ -144,6 +144,8 @@ export default class MainSliderHandler extends React.Component {
 			return;
 		}
 
+		this._startAnimation();
+
 		this.refs.boxSlider._setSlide(slideId);
 		this.refs.backgroundSlider._setSlide(slideId);
 		this.setState({currentSlide: slideId});
@@ -174,11 +176,9 @@ export default class MainSliderHandler extends React.Component {
 						</div>
 					</div>
 					<BackgroundSlider ref="backgroundSlider" currentSlide={this.state.currentSlide}
-					                  slideData={this.state.slideData} onAnimationStart={this._startAnimation.bind(this)}
-					                  onAnimationEnd={this._endAnimation.bind(this)}/>
+					                  slideData={this.state.slideData} />
 					<BoxSlider ref="boxSlider" currentSlide={this.state.currentSlide} slideData={this.state.slideData}
-					           onChangeSlide={this._setSlide.bind(this)} onAnimationStart={this._startAnimation.bind(this)}
-					           onAnimationEnd={this._endAnimation.bind(this)} parent={this} />
+					           onChangeSlide={this._setSlide.bind(this)} onAnimationEnd={this._endAnimation.bind(this)} parent={this} />
 					<div className="main-slider__social-links social-links">
 						<a href="#" className="social-links__item">facebook</a>
 						<a href="#" className="social-links__item">vkontakte</a>

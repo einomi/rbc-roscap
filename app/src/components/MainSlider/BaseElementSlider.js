@@ -42,19 +42,23 @@ export default class BaseElementSlider extends React.Component {
 	_setSlide(slideId, immediate) {
 		let x = -(this.slideWidth * (slideId));
 
-		this.props.onAnimationStart();
-
 		if (!immediate) {
 			TweenMax.to(this.refs.slideList, 0.8, {
 				x: x,
 				ease: Expo.easeInOut,
-				onComplete: () => this.props.onAnimationEnd()
+				onComplete: () => {
+					if (this.props.onAnimationEnd) {
+						this.props.onAnimationEnd();
+					}
+				}
 			});
 		} else {
 			TweenMax.set(this.refs.slideList, {
 				x: x,
 			});
-			this.props.onAnimationEnd();
+			if (this.props.onAnimationEnd) {
+				this.props.onAnimationEnd();
+			}
 		}
 	}
 }
