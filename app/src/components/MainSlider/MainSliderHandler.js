@@ -102,11 +102,13 @@ export default class MainSliderHandler extends React.Component {
 	componentDidMount() {
 		window.addEventListener('keydown', this._keyDownHandler);
 		window.addEventListener('mousewheel', this._onWheelHandler);
+		window.addEventListener('DOMMouseScroll', this._onWheelHandler);
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener('keydown', this._keyDownHandler);
 		window.removeEventListener('mousewheel', this._onWheelHandler);
+		window.removeEventListener('DOMMouseScroll', this._onWheelHandler);
 	}
 
 	_startAnimation() {
