@@ -79,9 +79,9 @@ export default class PageSlider extends React.Component {
 				return;
 			}
 
-			// console.log(this.wrapperDOMNode);
+			let delta = e.deltaY ? e.deltaY : -e.wheelDelta;
 
-			if (window.scrollY >= wrapperDOMNode.offsetHeight - window.innerHeight && e.deltaY > 0) {
+			if (window.scrollY >= wrapperDOMNode.offsetHeight - window.innerHeight && delta > 0) {
 				if (this.scrollCount > 5) {
 					this.scrollAnimating = true;
 					this._addSlide();

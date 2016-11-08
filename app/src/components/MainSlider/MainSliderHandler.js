@@ -85,9 +85,12 @@ export default class MainSliderHandler extends React.Component {
 		};
 
 		this._onWheelHandler = (e) => {
-			console.log(e.deltaY);
+			// console.log(e);
+			// console.log(e.deltaY);
 
-			let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
+			let delta = e.deltaY ? e.deltaY : -e.wheelDelta;
+
+			let direction = delta > 0 ? 'FORWARD' : 'REVERSE';
 			direction == 'FORWARD' ? this._next(true) : this._prev(true);
 		};
 	}
