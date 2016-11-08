@@ -85,14 +85,7 @@ export default class MainSliderHandler extends React.Component {
 		};
 
 		this._onWheelHandler = (e) => {
-			// console.log('wheel');
-			let smallScreen = window.innerHeight <= MAX_HEIGHT_SM && window.innerWidth <= BREAKPOINTS.MD;
-			let wideScreenSmallHeight = window.innerHeight <= MAX_HEIGHT_MD && window.innerWidth > BREAKPOINTS.MD;
-
-			// if (smallScreen || wideScreenSmallHeight) {
-			// 	return;
-			// }
-			// console.log(e);
+			console.log(e.deltaY);
 
 			let direction = e.deltaY > 0 ? 'FORWARD' : 'REVERSE';
 			direction == 'FORWARD' ? this._next(true) : this._prev(true);
@@ -101,14 +94,30 @@ export default class MainSliderHandler extends React.Component {
 
 	componentDidMount() {
 		window.addEventListener('keydown', this._keyDownHandler);
-		window.addEventListener('mousewheel', this._onWheelHandler);
-		window.addEventListener('DOMMouseScroll', this._onWheelHandler);
+        if ('onwheel' in document) {
+            // IE9+, FF17+, Ch31+
+            window.addEventListener("wheel", this._onWheelHandler);
+        } else if ('onmousewheel' in document) {
+            // устаревший вариант события
+            window.addEventListener("mousewheel", this._onWheelHandler);
+        } else {
+            // Firefox < 17
+            window.addEventListener("MozMousePixelScroll", this._onWheelHandler);
+        }
 	}
 
 	componentWillUnmount() {
 		window.removeEventListener('keydown', this._keyDownHandler);
-		window.removeEventListener('mousewheel', this._onWheelHandler);
-		window.removeEventListener('DOMMouseScroll', this._onWheelHandler);
+		if ('onwheel' in document) {
+			// IE9+, FF17+, Ch31+
+			window.removeEventListener("wheel", this._onWheelHandler);
+		} else if ('onmousewheel' in document) {
+			// устаревший вариант события
+			window.removeEventListener("mousewheel", this._onWheelHandler);
+		} else {
+			// Firefox < 17
+			window.removeEventListener("MozMousePixelScroll", this._onWheelHandler);
+		}
 	}
 
 	_startAnimation() {

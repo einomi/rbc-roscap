@@ -98,8 +98,16 @@ export default class PageSlider extends React.Component {
 		}
 
 		this.scrollCount = 0;
-		window.addEventListener('mousewheel', this._onWheelHandler);
-		window.addEventListener('DOMMouseScroll', this._onWheelHandler);
+		if ('onwheel' in document) {
+			// IE9+, FF17+, Ch31+
+			window.addEventListener("wheel", this._onWheelHandler);
+		} else if ('onmousewheel' in document) {
+			// устаревший вариант события
+			window.addEventListener("mousewheel", this._onWheelHandler);
+		} else {
+			// Firefox < 17
+			window.addEventListener("MozMousePixelScroll", this._onWheelHandler);
+		}
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -112,8 +120,16 @@ export default class PageSlider extends React.Component {
 	componentWillUnmount() {
 		this.scrollController.destroy();
 		window.removeEventListener('resize', this.scrollController.update);
-		window.removeEventListener('mousewheel', this._onWheelHandler);
-		window.removeEventListener('DOMMouseScroll', this._onWheelHandler);
+		if ('onwheel' in document) {
+			// IE9+, FF17+, Ch31+
+			window.removeEventListener("wheel", this._onWheelHandler);
+		} else if ('onmousewheel' in document) {
+			// устаревший вариант события
+			window.removeEventListener("mousewheel", this._onWheelHandler);
+		} else {
+			// Firefox < 17
+			window.removeEventListener("MozMousePixelScroll", this._onWheelHandler);
+		}
 	}
 
 	_onNextClickHandler(slideIndex) {
