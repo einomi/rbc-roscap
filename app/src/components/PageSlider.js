@@ -97,7 +97,8 @@ export default class PageSlider extends React.Component {
 	}
 
 	componentDidMount() {
-		for (let item of this.state.items) {
+		for (var i = 0; i < this.state.items.length; i++) {
+			var item = this.state.items[i];
 			this._createScrollScene(item);
 		}
 
