@@ -99,6 +99,7 @@ export default class PageSlider extends React.Component {
 
 		this.scrollCount = 0;
 		window.addEventListener('mousewheel', this._onWheelHandler);
+		window.addEventListener('DOMMouseScroll', this._onWheelHandler);
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -112,6 +113,7 @@ export default class PageSlider extends React.Component {
 		this.scrollController.destroy();
 		window.removeEventListener('resize', this.scrollController.update);
 		window.removeEventListener('mousewheel', this._onWheelHandler);
+		window.removeEventListener('DOMMouseScroll', this._onWheelHandler);
 	}
 
 	_onNextClickHandler(slideIndex) {
