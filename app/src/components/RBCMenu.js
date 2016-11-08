@@ -12,7 +12,8 @@ export default class RBCMenu extends React.Component {
 		};
 
 		window.addEventListener('scroll', () => {
-			if (window.scrollY === 0) {
+            let scrollY = window.scrollY || window.pageYOffset;
+			if (scrollY === 0) {
 				this._hideMenuList();
 			}
 		});
