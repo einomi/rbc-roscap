@@ -2,11 +2,7 @@ require('styles/common.sass');
 
 import TweenMax from 'TweenMax';
 global.TweenMax = TweenMax;
-import Draggable from 'Draggable'
-global.Draggable = Draggable;
 import 'ScrollToPlugin'
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Router, IndexRoute, Route, browserHistory } from 'react-router'
 
 import App from './components/App'

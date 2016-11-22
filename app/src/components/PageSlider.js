@@ -1,7 +1,5 @@
 import './PageSlider.sass'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
 import {Link} from 'react-router'
 import ScrollMagic from 'scrollmagic'
 import 'debug.addIndicators'
@@ -125,6 +123,10 @@ export default class PageSlider extends React.Component {
 	componentWillUnmount() {
 		this.scrollController.destroy();
 		window.removeEventListener('resize', this.scrollController.update);
+		this._removeWheelListeners();
+	}
+
+	_removeWheelListeners() {
 		if ('onwheel' in document) {
 			// IE9+, FF17+, Ch31+
 			window.removeEventListener("wheel", this._onWheelHandler);
@@ -180,6 +182,9 @@ export default class PageSlider extends React.Component {
 			return;
 		}
 		this.lastItem = this.availableItems.shift();
+		if (this.availableItems.length === 0) {
+		    this._removeWheelListeners();
+		}
 		this._addSlideToState(this.lastItem);
 	}
 

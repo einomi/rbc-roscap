@@ -1,7 +1,5 @@
 import './Article.sass'
 
-import React from 'react'
-import classNames from 'classnames'
 import { Link } from 'react-router'
 import MoreArticles from './MoreArticles'
 import ScrollAnimation from './ScrollAnimation'

@@ -1,6 +1,4 @@
-import React from 'react'
 import ScrollAnimation from './ScrollAnimation'
-
 import Share from './Share'
 
 export default (props) =>

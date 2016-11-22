@@ -1,9 +1,5 @@
 import './Pager.sass'
 
-import React from 'react'
-import classNames from 'classnames'
-
-
 export default class Pager extends React.Component {
 	constructor(props) {
 		super(props);

@@ -1,8 +1,4 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import { Link } from 'react-router'
-import classNames from 'classnames'
-
 
 export default class BoxSliderItem extends React.Component {
 	componentDidMount() {

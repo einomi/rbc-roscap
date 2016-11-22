@@ -1,6 +1,3 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-
 export default class BaseElementSlider extends React.Component {
 	constructor(props) {
 		super(props);

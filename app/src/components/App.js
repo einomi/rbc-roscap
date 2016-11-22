@@ -1,5 +1,3 @@
-import React from 'react'
-
 import RBCMenu from './RBCMenu'
 
 export default class App extends React.Component {

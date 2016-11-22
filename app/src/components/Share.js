@@ -1,9 +1,5 @@
 import './Share.sass'
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import classNames from 'classnames'
-
 export default class Share extends React.Component {
 	componentDidMount() {
 		this.container = ReactDOM.findDOMNode(this.refs.container);

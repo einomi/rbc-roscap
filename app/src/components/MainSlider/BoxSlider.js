@@ -1,7 +1,6 @@
 import './BoxSlider.sass';
 
-import React from 'react'
-import ReactDOM from 'react-dom'
+import Draggable from 'Draggable'
 
 import BaseElementSlider from './BaseElementSlider'
 import BoxSliderItem from './BoxSliderItem'

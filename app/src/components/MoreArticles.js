@@ -1,7 +1,5 @@
 import './MoreArticles.sass'
 
-import React from 'react'
-
 export default () =>
 	<div className="article__other-articles other-articles" data-hide-on-leave>
 		<div className="skin">

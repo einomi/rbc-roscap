@@ -19,7 +19,12 @@ var plugins = [
     new webpack.ResolverPlugin(
         new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
     ),
-	new ExtractTextPlugin('[name].css')
+	new ExtractTextPlugin('[name].css'),
+	new webpack.ProvidePlugin({
+		React: 'react',
+		ReactDOM: 'react-dom',
+		classNames: 'classnames',
+	})
 ];
 
 if (argv.production) {
@@ -79,12 +84,12 @@ var config = {
 	    alias: {
 		    'ScrollMagic': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'),
 		    'debug.addIndicators': path.resolve('node_modules', 'scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js'),
-		    'TweenLite': path.resolve('node_modules', 'gsap/src/uncompressed/TweenLite.js'),
 		    'TweenMax': path.resolve('node_modules', 'gsap/src/uncompressed/TweenMax.js'),
 		    'ScrollToPlugin': path.resolve('node_modules', 'gsap/src/uncompressed/plugins/ScrollToPlugin.js'),
-		    'Draggable': path.resolve('node_modules', 'gsap/src/uncompressed/utils/Draggable.js')
+		    'Draggable': path.resolve('node_modules', 'gsap/src/uncompressed/utils/Draggable.js'),
+		    'CSSPlugin': path.resolve('node_modules', 'gsap/src/uncompressed/plugins/CSSPlugin.js')
 	    },
-        extensions: ['', '.js', '.jsx', 'sass'],
+        extensions: ['', '.js', '.jsx', '.sass'],
         modulesDirectories: ['node_modules', 'bower_components'],
 	    root: [path.join(__dirname, './app/src')]
     },

@@ -1,7 +1,5 @@
 import './MainSliderHandler.sass';
 
-import React from 'react'
-
 import BoxSlider from './BoxSlider'
 import BackgroundSlider from './BackgroundSlider'
 import {BREAKPOINTS, MAX_HEIGHT_SM, MAX_HEIGHT_MD} from '../../config/media'
