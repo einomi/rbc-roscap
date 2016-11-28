@@ -1,5 +1,6 @@
 import ScrollAnimation from './ScrollAnimation'
 import Share from './Share'
+import ArticleNav from './ArticleNav'
 
 export default (props) =>
 	<div className="article__content">
@@ -8,114 +9,59 @@ export default (props) =>
 			<div className="article__content-inner">
 
 				<aside className="article__sidebar _hidden-sm">
-					<div className="article__sidebar-image">
-						<img src="/media/img/articles/article1-thumb.jpg" alt=""/>
+					<div className="article__sidebar-inner">
+						<div className="article__sidebar-image">
+							<img src="/media/img/articles/article3-thumb.jpg" alt=""/>
+						</div>
+						<ScrollAnimation fromX="left">
+							<ArticleNav items={props.items} />
+						</ScrollAnimation>
 					</div>
-					<ScrollAnimation fromX="left">
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как получить финансы на развитие малого бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как развивать бизнес с помощью финансовых продуктов</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как сэкономить на ведении бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-					</ScrollAnimation>
 				</aside>
 
 				<div className="article__main">
 					<div className="article__section">
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-							Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa
-							nisl quis neque. Suspendisse in orci enim.</p>
+						<h2 className="article__subtitle">Борьба с рисками</h2>
+						<p className="article__text text">Возможностей инвестировать капитал сегодня масса, однако многие из них в условиях текущей экономической нестабильности могут нести риски.</p>
+						<p className="article__text text">К примеру, во времена стабильного роста рынка неплохим вариантом приумножения средств были инвестиции в биржевые инструменты, например, в акции – для тех, кто лучше разбирается в рыночных трендах (так называемое активное инвестирование), и в индексные инструменты – ПИФы, ETF, либо вовсе передача средств в доверительное управление – для тех, кто не является профессионалом на бирже (так называемое консервативное инвестирование). Но опыт последних кризисов показал, что даже консервативная стратегия на бирже может принести убытки. Даже крупные иностранные хедж-фонды могут терпеть крах, как в 1998 году это произошло с крупной корпорацией LTCM. В 2015 году в квартал закрывались по 200-250 хедж-фондов, по подсчетам Hedge Fund Research, а совокупная доходность индустрии была отрицательной.</p>
+						<p className="article__text text">Наученный горьким опытом бизнес стал выбирать максимально консервативные и надежные инструменты инвестирования, а именно размещение на банковских вкладах.</p>
+						<p className="article__text text">Это подтверждает и статистика регулятора. Как сообщал СМИ в конце сентября глава департамента денежно-кредитной политики Банка России Игорь Дмитриев, в 2017 году  Банк России ожидает роста банковских депозитов (розничных и корпоративных) на 7-9%. В 2016 году темпы роста вкладов составят 10-15%. А в 2015 году депозиты и средства на счетах организаций (берем исключительно корпоративный сегмент) увеличились на 15,6%, до 27,1 триллиона рублей.</p>
+						<p className="article__text text">Безусловно, в условиях постоянного отзыва лицензий у небольших игроков компании предпочитают размещать средства в наиболее устойчивых банках, желательно с участием государственного капитала в структуре.</p>
 					</div>
 					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. </p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. </p>
-					</div>
-					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. </p>
+						<h2 className="article__subtitle">Вклад на ночь</h2>
+						<p className="article__text text">Банки, в свою очередь, предлагают корпоративным клиентам довольно интересные программы депозитов – с привлекательными ставками и различными сроками размещения, вплоть до 1 дня. И даже не дня, а ночи!...</p>
+						<p className="article__text text">Например, в банке «Российский капитал» временно свободные денежные средства можно разместить в классический срочный депозит на срок от одного дня, причем заключив сделку до 16:00 часов, перечислить средства на депозитный счет можно вплоть до 24:00. Проценты же можно получить уже на следующий день! Таким образом, свободные деньги предпринимателя могут работать и приносить доход, причем даже ночью.</p>
+						<p className="article__text text">Например, размещая в банке «Российский капитал» на депозите 10 млн рублей только на выходные дни в течение 3 месяцев (июль, август, сентябрь 2016), клиент получает дополнительный доход в размере 101 тыс. руб. (средняя процентная ставка за указанный период составляла 9,53% годовых).</p>
 					</div>
 				</div>{/*.article__main */}
 
 			</div>{/*.article__content-inner*/}
-		</div>{/*.skin*/}
 
-		<ScrollAnimation fromX="right">
-			<div className="skin">
-				<div className="article__emphasis emphasis">
-					<div className="emphasis__headline">Комментарий эксперта</div>
-					<div className="emphasis__content">
-						<div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</div>
+			<ScrollAnimation fromX="right">
+				<div className="skin">
+					<div className="article__emphasis emphasis">
+						<div className="emphasis__headline">Комментарий эксперта</div>
+						<div className="emphasis__content">
+							<div className="emphasis__text">В условиях жесткой конкуренции за каждого клиента, когда зачастую клиент «диктует» банку условия размещения средств, банк «Российский капитал» предлагает, казалось бы, типовые продукты управления ликвидностью, но с уникальными характеристиками. Так, временно свободные денежные средства можно разместить в классический срочный депозит на срок от одного дня. Заключить сделку можно до 16-00 часов по местному времени, перечислить средства на депозитный счет – в дату заключения сделки без ограничений по времени, а возврат депозита и выплата процентов на счет клиента, открытый в банке, будут произведены автоматически еще до начала операционного дня, и воспользоваться денежными средствами можно уже утром. Такой механизм размещения средств позволяет говорить о том, что денежные средства фактически могут «работать» и приносить доход даже ночью.</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</ScrollAnimation>
-
-		<div className="skin">
+			</ScrollAnimation>
 
 			<div className="article__content-inner">
 				<aside className="article__sidebar">
 					<ScrollAnimation fromX="left">
-						<div className="article__offer offer">
+						<div className="article__offer offer _less-margin-top">
 							<div className="offer__head">
 								<div className="offer__logos"></div>
 								<div className="offer__title">Специальное
 									предложение</div>
 							</div>
 							<div className="offer__content">
-								<div className="offer__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</div>
-								<div className="offer__more">Подробнее на <a href="http://roscap.ru" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
+								<div className="offer__text">Депозиты для корпоративных клиентов</div>
+								<div className="offer__text">В банке «Российский капитал» можно разместить средства на срок от 1 до 1095 дней. В банке действует гибкая система ставок по депозитам, которые зависят от валюты, суммы и срока вклада.</div>
+								<div className="offer__more">Подробнее на <a href="http://roscap.ru/corporate/disposition/" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
 							</div>
 						</div>
 					</ScrollAnimation>
@@ -123,50 +69,39 @@ export default (props) =>
 
 				<div className="article__main">
 					<div className="article__section">
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-							Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa
-							nisl quis neque. Suspendisse in orci enim.</p>
+						<h2 className="article__subtitle">Критерии надежности</h2>
+						<p className="article__text text">Единственным акционером банка «Российский капитал» является государственная корпорация «Агентство по страхованию вкладов», что обеспечивает определенное конкурентное преимущество на рынке.</p>
+						<p className="article__text text">Кроме того, наличие в банке специализированных депозитов, которые позволяют размещать средства компенсационных фондов саморегулируемых организаций, фондов обязательного медицинского страхования, средства пенсионных резервов негосударственных пенсионных фондов в соответствии с требованиями законодательства, по мнению многих клиентов, является дополнительным аргументом в пользу выбора банка «Российский капитал» в качестве финансового партнера. И эти аргументы не голословны: за 9 месяцев 2016 года банк заключил с клиентами малого бизнеса более 5 тысяч срочных сделок на общую сумму более 21 млрд руб.</p>
 					</div>
-					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. </p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. </p>
-					</div>
+				</div>{/*.article__main */}
 
+			</div>{/*.article__content-inner*/}
+
+			<ScrollAnimation fromX="right">
+				<div className="skin">
+					<div className="article__emphasis emphasis">
+						<div className="emphasis__headline">Комментарий эксперта</div>
+						<div className="emphasis__content">
+							<div className="emphasis__text">Кроме классических срочных депозитов с правом или без права досрочного отзыва с выплатой процентов в конце срока или на ежемесячной основе, банк «Российский капитал» предлагает клиентам возможность начисления процентов на неснижаемый остаток денежных средств на расчетном счете при условии выполнения клиентом обязательств по поддержанию фиксированного остатка.</div>
+						</div>
+					</div>
+				</div>
+			</ScrollAnimation>
+
+			<div className="article__content-inner">
+
+				<aside className="article__sidebar">
+				</aside>
+
+				<div className="article__main">
+					<div className="article__section">
+						<h2 className="article__subtitle">Возможность выбора</h2>
+						<p className="article__text text">Среди банковских продуктов, приносящих доход бизнесу, – классические депозиты с различными опциями (включая возможность досрочного расторжения, пополнения и пр.).</p>
+						<p className="article__text text">Например, в банке «Российский капитал» можно разместить депозит на срок от 1 до 1095 дней. При этом в банке придерживаются индивидуального подхода к каждому клиенту: действует гибкая система ставок по депозитам, которые зависят от валюты, суммы и срока вклада. Краткосрочный депозит (от одного дня) можно открыть также на выходные и праздничные дни, чтобы свободные деньги клиента приносили доход даже в то время, когда они не требуются в бизнесе.</p>
+					</div>
 					<footer className="article__footer">
 						<Share className="article__footer-share" />
 					</footer>
-
-
 				</div>{/*.article__main */}
 
 			</div>{/*.article__content-inner*/}

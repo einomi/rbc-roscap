@@ -77,7 +77,7 @@ export default class BoxSlider extends BaseElementSlider {
 						<div className="box-slider__list" ref="slideList">
 							{this.state.slideData.map((item, index) => {
 									let isCurrent = this.state.currentSlide === item.id ? true : false;
-									return <BoxSliderItem key={item.id} isCurrent={isCurrent} parentWidth={this.slideWidth} {...item} />
+									return <BoxSliderItem key={item.id} isCurrent={isCurrent} parentWidth={this.slideWidth} {...item} onMoreClick={this.props.onMoreClick} />;
 								}
 							)}
 						</div>

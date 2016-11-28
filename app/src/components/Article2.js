@@ -1,5 +1,6 @@
 import ScrollAnimation from './ScrollAnimation'
 import Share from './Share'
+import ArticleNav from './ArticleNav'
 
 export default (props) =>
 	<div className="article__content">
@@ -8,101 +9,56 @@ export default (props) =>
 			<div className="article__content-inner">
 
 				<aside className="article__sidebar _hidden-sm">
-					<div className="article__sidebar-image">
-						<img src="/media/img/articles/article1-thumb.jpg" alt=""/>
+					<div className="article__sidebar-inner">
+						<div className="article__sidebar-image">
+							<img src="/media/img/articles/article2-thumb.jpg" alt=""/>
+						</div>
+						<ScrollAnimation fromX="left">
+							<ArticleNav items={props.items} />
+						</ScrollAnimation>
 					</div>
-					<ScrollAnimation fromX="left">
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как получить финансы на развитие малого бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как развивать бизнес с помощью финансовых продуктов</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-						<div className="article__sidebar-more-info more-info">
-							<div className="more-info__title">Как сэкономить на ведении бизнеса</div>
-							<a href="#" className="more-info__button button _arrows">
-								<span className="button__caption">Узнать</span>
-								<svg className="button__arrows" preserveAspectRatio="xMidYMid" width="15" height="17" viewBox="0 0 15 17"> <path d="M8.792,16.127 L5.543,16.127 L10.910,8.500 L5.543,0.874 L8.792,0.874 L14.159,8.500 L8.792,16.127 ZM3.699,16.127 L0.450,16.127 L5.817,8.500 L0.450,0.874 L3.699,0.874 L9.066,8.500 L3.699,16.127 Z"/> </svg>
-							</a>
-						</div>
-					</ScrollAnimation>
 				</aside>
 
 				<div className="article__main">
 					<div className="article__section">
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-							Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa
-							nisl quis neque. Suspendisse in orci enim.</p>
+						<p className="article__text text">Мы все уже давно контролируем наши денежные потоки по банковским картам в режиме он-лайн: видим каждую операцию, можем совершать переводы по шаблонам и автоплатежам, оплачивать счета, открывать вклады и т.д. Раньше для корпоративных клиентов многие из этих опций были недоступны. Но сегодня продуктовые линейки банков пополнились этими и другими интересными удобными сервисами для бизнеса. При этом бизнес в онлайн среде развивается с двух сторон: банки предоставляют корпоративным и частным клиентам дистанционные финансовые сервисы, предприниматели и компании в свою очередь также стремятся взаимодействовать с кредитными организациями и своими клиентами он-лайн.</p>
 					</div>
 					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. </p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. </p>
-					</div>
-					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. </p>
+						<h2 className="article__subtitle">Надежность</h2>
+						<p className="article__text text">По отзывам опрошенных РБК компаний из сферы малого и среднего бизнеса, при выборе корпоративного интернет-банка наиболее востребованы следующие факторы: оперативное управление денежными средствами и контроль за операциями, скорость обработки платежей, удобный интерфейс.</p>
+						<p className="article__text text">Компании сегодня стремятся перевести в онлайн-каналы максимум взаимодействия с кредитной организацией. При этом клиенты из малого бизнеса для платежного документооборота с банком все чаще выбирают мобильный банк. Вообще востребованность мобильного банкинга растет повсеместно – и в розничном, и корпоративном сегментах, и игнорировать эту тенденцию невозможно. По данным исследования Google, в 2014 году доля запросов о банковских услугах составляла 16%, а в 2015 – уже 35%. Причем наиболее популярной категорией для поисков с мобильных устройств стал «мобильный банк» (70%).  По прогнозам экспертов рынка, свыше 80% контактов с клиентами уйдет в мобильные каналы.</p>
+						<p className="article__text text">Также некий общий тренд – нацеленность на оптимизацию расходов. Сервисы интернет- и мобильного банка позволяют бизнесу сократить сроки оформления документов, отказаться полностью или частично от бумажного документооборота, снизить риски «попадания» на штрафы из-за возможных ошибок при оформлении документов.</p>
 					</div>
 				</div>{/*.article__main */}
 
 			</div>{/*.article__content-inner*/}
-		</div>{/*.skin*/}
 
-		<ScrollAnimation fromX="right">
-			<div className="skin">
-				<div className="article__emphasis emphasis">
-					<div className="emphasis__headline">Комментарий эксперта</div>
-					<div className="emphasis__content">
-						<div className="emphasis__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</div>
+			<ScrollAnimation fromX="right">
+				<div className="skin">
+					<div className="article__emphasis emphasis">
+						<div className="emphasis__headline">Комментарий эксперта</div>
+						<div className="emphasis__content">
+							<div className="emphasis__text">В августе банк «Российский капитал» внедрил новый интернет-банк для бизнеса «РК Бизнес Онлайн». Особенностями новой системы являются широкий функционал, простота и удобство в работе, а также высокая степень защиты при проведении операций.</div>
+							<div className="emphasis__text">Говоря о функционале, хотим отметить, что кроме базовых возможностей в системе реализованы такие сервисы как:</div>
+							<div className="emphasis__text">Говоря о функционале, хотим отметить, что кроме базовых возможностей в системе реализованы такие сервисы как:</div>
+							<ul className="emphasis__styled-list styled-list">
+								<li className="styled-list__item">Массовый платеж, позволяющий подписывать несколько документов одной электронной подписью;</li>
+								<li className="styled-list__item">Акцепт платежей дополнительной (визирующей) подписью;</li>
+								<li className="styled-list__item">Графики и аналитика (отображение информации из выписки в виде графиков с возможностью фильтрации по статьям доходов и расходов, планирование платежей и событий с возможностью настройки напоминаний);</li>
+								<li className="styled-list__item">Уведомление контрагентов клиента об исполненных платежных поручениях по sms и e-mail;</li>
+								<li className="styled-list__item">Работа под одним логином и паролем с несколькими организациями.</li>
+							</ul>
+							<p className="emphasis__text">Система имеет современный, интуитивно понятный интерфейс и работает во всех популярных браузерах. Клиенты могут подключиться к системе за один визит в банк.</p>
+                            <p className="emphasis__text">На выбор клиенту мы предлагаем два способа защиты и подтверждения операций:</p>
+							<ul className="emphasis__styled-list styled-list">
+								<li className="styled-list__item">одноразовые пароли, приходящие на мобильный телефон;</li>
+								<li className="styled-list__item">электронная подпись, которая хранится на USB-токене.</li>
+							</ul>
+							<p className="emphasis__text">В настоящее время мы активно работаем над развитием системы. В ближайших планах – внедрение новых возможностей, например, работа с депозитами, прямая интеграция с бухгалтерской системой 1С, отправка платежей БЭСП через систему.</p>
+						</div>
 					</div>
 				</div>
-			</div>
-		</ScrollAnimation>
-
-		<div className="skin">
+			</ScrollAnimation>
 
 			<div className="article__content-inner">
 				<aside className="article__sidebar">
@@ -114,8 +70,12 @@ export default (props) =>
 									предложение</div>
 							</div>
 							<div className="offer__content">
-								<div className="offer__text">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</div>
-								<div className="offer__more">Подробнее на <a href="http://roscap.ru" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
+								<div className="offer__text">Интернет-банк «РК Бизнес Онлайн» банка «Российский капитал» — это подключение за 1 визит в банк. С помощью «РК Бизнес Онлайн» вы можете: проводить платежи и переводы, получать выписки, осуществлять конверсионные операции и др.</div>
+								<div className="offer__more">Подробнее на <a href="http://roscap.ru/corporate/rko/internet_bank/" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
+								<div className="offer__text">«SMS-информирование»</div>
+								<div className="offer__text">Корпоративным клиентам предлагается подключить sms-уведомления о совершении операций по расчетному счету — о списании и поступлении денежных средств, а также решений ИФНС. К одному счету может быть подключено не более трех телефонных номеров.</div>
+								<div className="offer__more">Подробнее на <a href="http://roscap.ru/corporate/rko/accounts/" target="_blank" className="offer__link link">ROSCAP.RU</a></div>
+								<div className="offer__text">«Корпоративный автоплатеж» позволит автоматически делать регулярные переводы денежных средств в российских рублях на основании заявления клиента. Автоплатеж можно осуществлять с разной периодичностью (ежедневно, еженедельно, ежемесячно) и на определенную сумму.</div>
 							</div>
 						</div>
 					</ScrollAnimation>
@@ -123,50 +83,56 @@ export default (props) =>
 
 				<div className="article__main">
 					<div className="article__section">
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.
-							Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa
-							nisl quis neque. Suspendisse in orci enim.</p>
+						<h2 className="article__subtitle">Банк в онлайн</h2>
+						<p className="article__text text">Банки идут от потребностей клиентов. Сегодня можно прийти в банк один раз для процедуры идентификации и верификации, предоставить все необходимые документы, после чего банк откроет фирме счет, по которому платежи, переводы и выписки можно будет осуществлять по удаленным каналам.</p>
+						<p className="article__text text">Интернет-банк «РК Бизнес Онлайн», например, предлагаемый банком «Российский капитал», позволяет вести полноценные расчеты по рублевым и валютным счетам, анализировать денежные потоки и управлять ими, а ряд действий можно оформить шаблонами. Все это в совокупности заметно облегчает работу бизнесу и сокращает временные ресурсы.</p>
+						<p className="article__text text">На сайте банка в соответствующем разделе вы сможете найти видео-инструкции по направлениям работы: платежи, выписки, перевод валюты, и др.</p>
 					</div>
 					<div className="article__section">
-						<h2 className="article__subtitle">Подзаголовок</h2>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. </p>
-						<p className="article__text text">This is Photoshop's version of Lorem Ipsum. Proin gravida
-							nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi
-							elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh
-							vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio
-							tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
-							Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-							himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-							augue. </p>
+						<h2 className="article__subtitle">Мобильное удобство</h2>
+						<p className="article__text text">В банке «Российский капитал» действует еще одна удобная востребованная услуга для корпоративных клиентов – «SMS-информирование по счету клиента». Корпоративным клиентам предлагается подключить sms-уведомления о совершении операций по расчетному счету, специальному счету поставщика/платежного агента (субагента). Банк направляет клиенту оповещения обо всех операциях: списание и поступление денежных средств, поступление решений налоговых органов о приостановлении/отмене приостановления операций.</p>
+						<p className="article__text text">К одному счету может быть подключено до трех телефонных номеров. Можно подключить, например, номера генерального директора, главного бухгалтера, коммерческого директора. Как показывает практика, услуга sms-информирования сегодня очень востребована корпоративными клиентами.</p>
 					</div>
+					<div className="article__section">
+						<h2 className="article__subtitle">Автоплатеж</h2>
+						<p className="article__text text">С помощью автоплатежа корпоративные клиенты банка могут настроить повторяющиеся операции. Исключение – автоплатеж пока нельзя использовать для проведения налоговых и обязательных платежей клиента в бюджетную систему и внебюджетные фонды, оплаты пеней, штрафов и таможенных платежей.</p>
+						<p className="article__text text">Все параметры автоплатежа клиент определяет сам в заявлении на подключение услуги: получатель, реквизиты, периодичность и сумма перевода. Причем для экономии времени обмениваться документами по услуге можно в рамках систем дистанционного банковского обслуживания.</p>
+						<p className="article__text text">Услуга предусматривает следующие возможности осуществления перевода:</p>
+						<ul className="article__styled-list styled-list">
+							<li className="styled-list__item">с периодичностью: ежедневно, еженедельно (в указанный день недели), ежемесячно (в указанный день месяца);</li>
+							<li className="styled-list__item">на сумму: фиксированная сумма, либо часть (процент) от определенной суммы.</li>
+						</ul>
+						<p className="article__text text">«Автоплатеж значительно экономит время наших клиентов, теперь при проведении традиционных периодических платежей не придется дополнительно обращаться в банк, формировать платежное поручение: расчёты становятся гораздо проще и комфортнее», – комментирует Татьяна Протопопова, директор Департамента продуктов и маркетинга банка «Российский капитал».</p>
+					</div>
+				</div>{/*.article__main */}
 
+			</div>{/*.article__content-inner*/}
+
+			<ScrollAnimation fromX="right">
+				<div className="skin">
+					<div className="article__emphasis emphasis">
+						<div className="emphasis__headline">Комментарий эксперта</div>
+						<div className="emphasis__content">
+							<div className="emphasis__text">В ближайшее время клиентам станет доступен мобильный банк для бизнеса, который позволит получить выписку по счету, посмотреть информацию о ближайших офисах банка и курсах валют, а также оформить платежное поручение. Для холдингов и групп компаний будет внедрена система, в которой реализованы возможности контроля и акцепта платежей, бюджетирования и отчетности по холдингу.</div>
+						</div>
+					</div>
+				</div>
+			</ScrollAnimation>
+
+			<div className="article__content-inner">
+
+				<aside className="article__sidebar">
+				</aside>
+
+				<div className="article__main">
+					<div className="article__section">
+						<h2 className="article__subtitle">Банк 24/7</h2>
+						<p className="article__text text">Если раньше платежи между компаниями шли, как правило, сутки, то сегодня провести операцию день-в-день уже не кажется волшебством. Некоторые банки предлагают клиентам продленный операционный день и даже круглосуточное проведение платежей.</p>
+						<p className="article__text text">Так, в рамках услуги «Проведение платежей, поступивших от клиента в послеоперационное время» (продленный операционный день) в пользу сторонних организаций, отправленные клиентами банка с 16:30 до 18:00 могут быть исполнены в день совершения операции. А для внутренних платежей банк реализовал возможность круглосуточного проведения операций корпоративных клиентов. В режиме 24/7 по системе «РК Бизнес Онлайн» можно проводить внутренние платежи на собственные счета клиента и иных юридических или физических лиц, открытые в банке «Российский капитал» (за исключением внутрибанковских переводов с расчетного счета клиента на счета физических лиц-клиентов банка, открытых для учета операций по банковским картам). Перевод проводится при достаточности собственных средств на счете и в том случае, если перевод не требует валютного контроля. </p>
+					</div>
 					<footer className="article__footer">
 						<Share className="article__footer-share" />
 					</footer>
-
-
 				</div>{/*.article__main */}
 
 			</div>{/*.article__content-inner*/}

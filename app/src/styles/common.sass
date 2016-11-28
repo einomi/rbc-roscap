@@ -60,6 +60,7 @@
 	height: 48px
 	line-height: 42px
 	font-weight: 600
+	cursor: pointer
 	$parent: &
 	+box
 	+unselectable
@@ -167,7 +168,7 @@
 			//max-width: 330px
 
 .emphasis
-	padding-left: 99px
+	padding-left: 81px
 	&__headline
 		height: 32px
 		line-height: 32px
@@ -185,6 +186,14 @@
 		font-family: "PFRegalTextPro"
 		color: #000
 		line-height: 26px
+		margin-bottom: 14px
+		&:last-child
+			margin-bottom: 0
+	&__styled-list
+		margin-bottom: 14px
+		font-family: "PFRegalTextPro"
+		&:last-child
+			margin-bottom: 0
 	+max-screen($breakpoint-md)
 		padding-left: 0
 		margin-top: 15px
@@ -233,6 +242,7 @@
 		color: $color-orange
 		text-transform: uppercase
 		font-weight: 700
+		margin-bottom: 30px
 	+max-screen($breakpoint-md)
 		max-width: 520px
 
@@ -293,3 +303,36 @@
 	font-size: 14px
 	color: #fff
 	background-color: rgba(#888, 0.8)
+	
+.styled-list
+	padding-left: 15px
+	&__item
+		position: relative
+		padding-left: 18px
+		margin-bottom: 8px
+		&:last-child
+			margin-bottom: 0
+		&:before
+			content: ""
+			position: absolute
+			display: block
+			left: 0
+			top: 9px
+			width: 4px
+			height: 4px
+			border-radius: 50%
+			background-color: #3e3e3e
+
+.example-enter
+	opacity: 0
+	transition: opacity .5s ease-in
+
+.example-enter.example-enter-active
+	opacity: 1
+
+.example-leave
+	display: none
+	transition: opacity .5s ease-in
+
+.example-leave.example-leave-active
+	opacity: 0

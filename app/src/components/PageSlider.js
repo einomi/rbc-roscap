@@ -10,58 +10,36 @@ export default class PageSlider extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.availableItems = [
+		this.items = [
 			{
 				id: 0,
 				refId: 'item0',
 				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
+				excerpt: 'На российском банковском рынке работает много финансовых организаций, оказывающих услуги корпоративным клиентам. Чтобы выбрать правильный банк для обслуживания, нужно учесть ряд важных моментов. Эксперты советуют делать это в комплексе.',
 			},
 			{
 				id: 1,
 				refId: 'item1',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
+				title: 'Как управлять финансами',
+				excerpt: 'Сегодня управлять финансами он-лайн предпочитают не только частные клиенты, но и корпоративные, особенно представители малого бизнеса. Для этого на рынке есть масса интересных решений',
 			},
 			{
 				id: 2,
 				refId: 'item2',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
+				title: 'Как приумножить капитал в бизнесе',
+				excerpt: 'Деньги в бизнесе должны работать, причем не только капитал в обороте, но и денежные средства на счетах компании. Для этого на рынке есть финансовые продукты, позволяющие заметно повысить доходность дела.',
 			},
 			{
 				id: 3,
 				refId: 'item3',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
-			},
-			{
-				id: 4,
-				refId: 'item4',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
-			},
-			{
-				id: 5,
-				refId: 'item5',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
-			},
-			{
-				id: 6,
-				refId: 'item6',
-				title: 'Как выбрать банк для обслуживания',
-				excerpt: 'В этом материале планируем рассказать, как выбирать банк по критериям - надежность, размер активов и капитала, рейтинги агентств и рейтинги в деловых СМИ, время работы на рынке, акционеры, и т.д. Во всех критериях делаем упор на преимущества банка "Российский капитал".'
-			},
-			{
-				id: 7,
-				refId: 'item7',
-				title: 'Empty',
-				excerpt: 'Empty'
+				title: null,
+				excerpt: null
 			}
 		];
 
-		this.availableItemsCount = this.availableItems.length;
+		this.itemsInit = this.items.slice();
+
+		this.itemsCount = this.items.length;
 
 		this.scrollController = new ScrollMagic.Controller();
 		this.firstEnter = true;
@@ -162,15 +140,15 @@ export default class PageSlider extends React.Component {
 		let itemId = this.props.route.itemId;
 		let initItems = [];
 
-		for (var i = 0; i < this.availableItems.length; i++) {
-			if (this.availableItems[i].id == itemId) {
-				initItems.push(this.availableItems[i]);
-				this.availableItems.splice(i, 1);
+		for (var i = 0; i < this.items.length; i++) {
+			if (this.items[i].id == itemId) {
+				initItems.push(this.items[i]);
+				this.items.splice(i, 1);
 				break;
 			}
 		}
 
-		initItems.push(this.availableItems.shift());
+		initItems.push(this.items.shift());
 
 		this.state = {
 			items: initItems
@@ -178,11 +156,11 @@ export default class PageSlider extends React.Component {
 	}
 
 	_addSlide() {
-		if (!this.availableItems.length) {
+		if (!this.items.length) {
 			return;
 		}
-		this.lastItem = this.availableItems.shift();
-		if (this.availableItems.length === 0) {
+		this.lastItem = this.items.shift();
+		if (this.items.length === 0) {
 		    this._removeWheelListeners();
 		}
 		this._addSlideToState(this.lastItem);
@@ -213,7 +191,8 @@ export default class PageSlider extends React.Component {
 
 				let currentId = parseInt(slideDOMNode.dataset.id);
 				if (currentId !== this.props.route.itemId || !this.firstEnter) {
-					history.pushState(`article${currentId}`, '', `/article/${currentId + 1}`);
+					// history.pushState(`article${currentId}`, '', `/article/${currentId + 1}`);
+					this.props.router.push(`/article/${currentId + 1}`);
 					this.firstEnter = false;
 				}
 			})
@@ -247,7 +226,7 @@ export default class PageSlider extends React.Component {
 				<div className="page-slider__items">
 					{this.state.items.map((item, index) => {
 						let isLast = false;
-						if (index == this.availableItemsCount - 2) {
+						if (index == this.itemsCount - 2) {
 							isLast = true;
 						}
 						let isHidden = false;
@@ -256,7 +235,7 @@ export default class PageSlider extends React.Component {
 						}
 						return (
 							<PageSliderItem key={item.id} ref={item.refId} isLast={isLast} isHidden={isHidden}
-							                onNext={this._onNextClickHandler.bind(this, index)} {...item} />
+							                onNext={this._onNextClickHandler.bind(this, index)} items={this.itemsInit} {...item} currentId={this.props.route.itemId} />
 						);
 					})}
 				</div>

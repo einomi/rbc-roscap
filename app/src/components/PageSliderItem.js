@@ -16,19 +16,19 @@ export default class PageSliderItem extends React.Component {
 	_createArticle(id) {
 		switch (id) {
 			case 0:
-				return <Article1 key={id} pageId={id}/>;
+				return <Article1 key={id} pageId={id} items={this.props.items} />;
 			case 1:
-				return <Article2 key={id} pageId={id}/>;
+				return <Article2 key={id} pageId={id} items={this.props.items} />;
 			case 2:
-				return <Article3 key={id} pageId={id}/>;
+				return <Article3 key={id} pageId={id} items={this.props.items} />;
 			case 3:
-				return <Article4 key={id} pageId={id}/>;
+				return <Article4 key={id} pageId={id} items={this.props.items} />;
 			case 4:
-				return <Article5 key={id} pageId={id}/>;
+				return <Article5 key={id} pageId={id} items={this.props.items} />;
 			case 5:
-				return <Article6 key={id} pageId={id}/>;
+				return <Article6 key={id} pageId={id} items={this.props.items} />;
 			case 6:
-				return <Article7 key={id} pageId={id}/>;
+				return <Article7 key={id} pageId={id} items={this.props.items} />;
 			default:
 				break;
 		}
@@ -58,7 +58,7 @@ export default class PageSliderItem extends React.Component {
                 {this._createArticle(this.props.id)}
 
 	            <ScrollAnimation fromY="bottom" className="skin">
-		            <MoreArticles />
+		            <MoreArticles currentId={this.props.currentId} items={this.props.items} />
 	            </ScrollAnimation>
 
 	            <div className={classNames('article__next-wrapper', {'_hidden': this.props.isLast})}>
